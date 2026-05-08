@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吴政淳 | 有BIG - AI 流程架构 & 数字化视频 · 双风格预览</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+<style>
+/* ========== FONTS & BASE ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,800;1,800&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;cursor:none;overflow-x:hidden;background:#050505;color:#e0e0e0}
+.font-mono{font-family:'JetBrains Mono',monospace}
+.font-cyber{font-family:'Orbitron',sans-serif}
+
+/* ========== CYBER COLOR TOKENS ========== */
+.neon-green{color:#39FF14}.bg-neon-green{background-color:#39FF14}.border-neon-green{border-color:#39FF14}
+.cyber-red{color:#FF0040}.bg-cyber-red{background-color:#FF0040}
+.electric-cyan{color:#00F0FF}.bg-electric-cyan{background-color:#00F0FF}
+.phantom-purple{color:#BF00FF}
+
+/* ========== PRO COLOR TOKENS ========== */
+.pro-amber{color:#D4A855}.bg-pro-amber{background-color:#D4A855}.border-pro-amber{border-color:#D4A855}
+.pro-gradient-bg{background:linear-gradient(135deg,#0A0F1E 0%,#0D1425 30%,#111827 60%,#0F172A 100%)}
+
+/* ========== ANIMATIONS ========== */
+@keyframes glitch{0%,14%{text-shadow:.05em 0 0 rgba(255,0,64,.75),-.05em -.025em 0 rgba(0,240,255,.75),-.025em .05em 0 rgba(191,0,255,.75)}15%,49%{text-shadow:-.05em -.025em 0 rgba(191,0,255,.75),.025em .025em 0 rgba(255,0,64,.75),-.05em -.05em 0 rgba(0,240,255,.75)}50%,99%{text-shadow:.025em .05em 0 rgba(0,240,255,.75),.05em 0 0 rgba(191,0,255,.75),0 -.05em 0 rgba(255,0,64,.75)}100%{text-shadow:-.025em 0 0 rgba(255,0,64,.75),-.025em -.025em 0 rgba(0,240,255,.75),-.025em -.05em 0 rgba(191,0,255,.75)}}
+.glitch-text{position:relative;text-shadow:.05em 0 0 rgba(255,0,64,.75),-.025em -.05em 0 rgba(0,240,255,.75),.025em .05em 0 rgba(191,0,255,.75);animation:glitch .5s infinite}
+
+@keyframes scanline{0%{bottom:100%}100%{bottom:-100%}}
+.scanline{width:100%;height:100px;z-index:10;background:linear-gradient(0deg,transparent 0%,rgba(57,255,20,.12) 25%,rgba(0,240,255,.08) 50%,rgba(191,0,255,.08) 75%,transparent 100%);opacity:.12;position:fixed;bottom:100%;animation:scanline 6s linear infinite;pointer-events:none}
+
+@keyframes neonBorderColor{0%{border-color:#39FF14;box-shadow:0 0 15px rgba(57,255,20,.4)}25%{border-color:#FF0040;box-shadow:0 0 15px rgba(255,0,64,.4)}50%{border-color:#00F0FF;box-shadow:0 0 15px rgba(0,240,255,.4)}75%{border-color:#BF00FF;box-shadow:0 0 15px rgba(191,0,255,.4)}100%{border-color:#39FF14;box-shadow:0 0 15px rgba(57,255,20,.4)}}
+.neon-border-cycle{animation:neonBorderColor 4s linear infinite}
+
+@keyframes neonTextGlow{0%{color:#39FF14;text-shadow:0 0 20px rgba(57,255,20,.6)}25%{color:#FF0040;text-shadow:0 0 20px rgba(255,0,64,.6)}50%{color:#00F0FF;text-shadow:0 0 20px rgba(0,240,255,.6)}75%{color:#BF00FF;text-shadow:0 0 20px rgba(191,0,255,.6)}100%{color:#39FF14;text-shadow:0 0 20px rgba(57,255,20,.6)}}
+.neon-text-cycle{animation:neonTextGlow 4s linear infinite}
+
+@keyframes flicker{0%,19.999%,22%,62.999%,64%,64.999%,70%,100%{opacity:1}20%,21.999%,63%,63.999%,65%,69.999%{opacity:.33}}
+.flicker{animation:flicker 3s linear infinite}
+
+@keyframes breatheGlow{0%,100%{box-shadow:0 0 5px rgba(57,255,20,.3)}50%{box-shadow:0 0 30px rgba(57,255,20,.8),0 0 60px rgba(0,240,255,.3)}}
+.breathe-glow{animation:breatheGlow 3s ease-in-out infinite}
+
+@keyframes arrayScroll{from{transform:translateX(0)}to{transform:translateX(33.33%)}}
+.array-stream{position:relative;overflow:hidden;height:28px}
+.array-stream::before{content:"0x4F2A 0xB7C1 0x39FF 0x00F0 0xFF00 0xBF00 0xDEAD 0xC0DE 0x1A2B 0x3C4D 0x5E6F 0x7890 0xA1B2 0xC3D4 0xE5F6 0x0F1E 0x2D3E 0x4F5A 0x6B7C 0x8D9E 0xAFB0 0xC1D2 0xE3F4 0x0567";position:absolute;top:0;left:-100%;width:400%;height:100%;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:rgba(57,255,20,.12);animation:arrayScroll 15s linear infinite;white-space:nowrap;line-height:28px;word-spacing:2em}
+.pro-array-stream::before{color:rgba(212,168,85,.1);animation-duration:25s}
+
+@keyframes rgbShift{0%{filter:none}25%{filter:drop-shadow(2px 0 0 rgba(255,0,64,.7)) drop-shadow(-2px 0 0 rgba(0,240,255,.7))}50%{filter:drop-shadow(3px 0 0 rgba(191,0,255,.7)) drop-shadow(-3px 0 0 rgba(57,255,20,.7))}100%{filter:none}}
+.rgb-shift:hover{animation:rgbShift .3s ease}
+
+@keyframes proReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.pro-reveal{animation:proReveal .8s cubic-bezier(.4,0,.2,1) forwards}
+.pro-reveal:nth-child(2){animation-delay:.15s}
+.pro-reveal:nth-child(3){animation-delay:.3s}
+.pro-reveal:nth-child(4){animation-delay:.45s}
+
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(57,255,20,.7)}50%{box-shadow:0 0 0 8px rgba(57,255,20,0)}}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#39FF14;animation:pulseDot 2s ease-in-out infinite}
+
+/* ========== CURSOR ========== */
+.custom-cursor{width:20px;height:20px;border:2px solid #39FF14;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .1s ease,background .3s ease,border-color .3s ease;mix-blend-mode:difference;box-shadow:0 0 10px rgba(57,255,20,.5)}
+.custom-cursor.active{transform:scale(4);background:#39FF14;mix-blend-mode:normal;box-shadow:0 0 30px rgba(57,255,20,.8)}
+.cursor-trail{width:8px;height:8px;background:rgba(57,255,20,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998}
+.pro-cursor{border-color:#D4A855;box-shadow:0 0 10px rgba(212,168,85,.5)}
+.pro-cursor.active{background:#D4A855;box-shadow:0 0 30px rgba(212,168,85,.8)}
+
+/* ========== MATRIX CANVAS ========== */
+.matrix-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.1}
+
+/* ========== NOISE OVERLAY ========== */
+.noise-overlay{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+
+/* ========== HUD CORNERS ========== */
+.hud-tl,.hud-tr,.hud-bl,.hud-br{position:absolute;width:24px;height:24px;pointer-events:none}
+.hud-tl{top:0;left:0;border-top:2px solid #39FF14;border-left:2px solid #39FF14}
+.hud-tr{top:0;right:0;border-top:2px solid #39FF14;border-right:2px solid #39FF14}
+.hud-bl{bottom:0;left:0;border-bottom:2px solid #39FF14;border-left:2px solid #39FF14}
+.hud-br{bottom:0;right:0;border-bottom:2px solid #39FF14;border-right:2px solid #39FF14}
+.hud-cyan .hud-tl,.hud-cyan .hud-tr,.hud-cyan .hud-bl,.hud-cyan .hud-br{border-color:#00F0FF}
+.hud-red .hud-tl,.hud-red .hud-tr,.hud-red .hud-bl,.hud-red .hud-br{border-color:#FF0040}
+.hud-purple .hud-tl,.hud-purple .hud-tr,.hud-purple .hud-bl,.hud-purple .hud-br{border-color:#BF00FF}
+
+/* ========== OSCILLOSCOPE ========== */
+.oscilloscope{position:relative;height:40px;overflow:hidden;border-top:1px solid rgba(57,255,20,.15);border-bottom:1px solid rgba(57,255,20,.15)}
+.oscilloscope-wave{position:absolute;top:50%;left:0;width:200%;height:20px;transform:translateY(-50%);background:radial-gradient(ellipse at center,transparent 0%,rgba(57,255,20,.15) 40%,transparent 70%);animation:waveScroll 6s linear infinite}
+@keyframes waveScroll{from{transform:translateX(0) translateY(-50%)}to{transform:translateX(-50%) translateY(-50%)}}
+
+/* ========== GLASS CARD (PRO) ========== */
+.glass-card{background:rgba(255,255,255,.02);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.05);border-radius:2rem;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{background:rgba(255,255,255,.05);border-color:rgba(212,168,85,.25);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 30px rgba(212,168,85,.04);transform:translateY(-4px)}
+
+/* ========== PRO SIDEBAR ========== */
+.pro-sidebar{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:1.2rem}
+.pro-sidebar-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all .3s ease;position:relative}
+.pro-sidebar-dot.active{background:#D4A855;border-color:#D4A855;box-shadow:0 0 12px rgba(212,168,85,.5);transform:scale(1.4)}
+.pro-sidebar-dot:hover{background:rgba(212,168,85,.5);transform:scale(1.2)}
+.pro-sidebar-label{position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);opacity:0;transition:all .3s ease;pointer-events:none}
+.pro-sidebar-dot:hover .pro-sidebar-label,.pro-sidebar-dot.active .pro-sidebar-label{opacity:1;color:#D4A855}
+
+/* ========== LANDING DIVIDER ========== */
+.landing-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,rgba(57,255,20,.25),rgba(212,168,85,.2),transparent);z-index:50}
+
+/* ========== STROKE TEXT ========== */
+.stroke-green{-webkit-text-stroke:2px #39FF14;color:transparent}
+.stroke-cyan{-webkit-text-stroke:2px #00F0FF;color:transparent}
+.stroke-red{-webkit-text-stroke:2px #FF0040;color:transparent}
+.stroke-purple{-webkit-text-stroke:2px #BF00FF;color:transparent}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#050505}::-webkit-scrollbar-thumb{background:#39FF14;border-radius:3px}
+.pro-scrollbar::-webkit-scrollbar-thumb{background:#D4A855}
+
+/* ========== CARD PERSPECTIVE ========== */
+.card-perspective{transform-style:preserve-3d;transition:transform .6s cubic-bezier(.19,1,.22,1)}
+.card-perspective:hover{transform:rotateX(8deg) rotateY(8deg) translateZ(15px)}
+
+/* ========== LANDING PARTICLES ========== */
+.landing-particle{position:absolute;border-radius:50%;background:white;pointer-events:none;animation:landingFloat 6s ease-in-out infinite}
+@keyframes landingFloat{0%,100%{transform:translateY(0);opacity:.08}50%{transform:translateY(-30px);opacity:.2}}
+/* Tag click ripple */
+.tag-wrapper{position:relative;display:inline-block}
+.tag-ripple{position:absolute;border-radius:50%;pointer-events:none;animation:tagRipple .6s ease-out forwards;z-index:0}
+@keyframes tagRipple{0%{width:0;height:0;opacity:1;transform:translate(-50%,-50%) scale(0)}100%{width:300px;height:300px;opacity:0;transform:translate(-50%,-50%) scale(1)}}
+.tag-tooltip{position:fixed;z-index:5000;pointer-events:none;opacity:0;transform:translateY(8px);transition:all .3s cubic-bezier(.34,1.56,.64,1);padding:10px 16px;border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;max-width:280px;text-align:left;line-height:1.5;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.tag-tooltip.show{opacity:1;transform:translateY(0)}
+.tag-active{transform:scale(1.08) !important}
+@keyframes tagPulse{0%,100%{box-shadow:0 0 8px currentColor}50%{box-shadow:0 0 24px currentColor,0 0 48px currentColor}}
+.tag-pulse{animation:tagPulse .8s ease-in-out 3}
+</style>
+</head>
+<body class="pro-scrollbar" id="body">
+<div id="root">
+  <div id="fallback" style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:16px;font-family:'JetBrains Mono',monospace">
+    <div style="font-size:48px">⚡</div>
+    <div style="color:#39FF14;font-size:22px;font-weight:900;font-family:Orbitron,sans-serif;letter-spacing:.2em">INITIALIZING</div>
+    <div style="color:#555;font-size:11px">React rendering...</div>
+  </div>
+</div>
+
+<script>
+// Error handler
+window.onerror = function(msg,url,line,col,err) {
+  var f = document.getElementById('fallback');
+  if(f) f.innerHTML = '<div style="text-align:center;padding:40px;font-family:monospace"><div style="font-size:48px;color:#FF0040;margin-bottom:12px">✕</div><div style="color:#FF0040;font-size:18px;font-weight:900;margin-bottom:8px">JavaScript Error</div><pre style="background:#111;padding:20px;border-radius:12px;max-width:90vw;overflow:auto;font-size:11px;color:#FF0040;text-align:left;white-space:pre-wrap">'+msg+'</pre><div style="color:#666;font-size:11px;margin-top:8px">line '+line+' col '+col+'</div></div>';
+  return true;
+};
+</script>
+<script>
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ===== DATA =====
+const DATA = {
+  name: "吴政淳",
+  title: "影视后期 / 导演 / AI流程架构师",
+  location: "成都",
+  email: "517456856@qq.com",
+  phone: "18908104732",
+  wechat: "allen_wu_cd",
+  summary: "8年影视后期沉淀，深耕AI工作流。主导开发节点式AI集成终端 JOLINK，通过底层API联调与ComfyUI深度集成。擅长利用 Remotion 构建数字化视频生产线。",
+  // PRO side: projects (used by ProResume)
+  projects: [
+    { title: "Remotion 视频引擎", type: "数字化视频渲染", subtitle: "基于 React 的视频自动化管线", desc: "构建了一套可复用的 React 组件库作为视频模板，结合 Node.js 实现分布式渲染，将编程思维引入影视后期。", tech: ["React", "Remotion", "Node.js"], color: "blue" },
+    { title: "MICA AI 桌宠", type: "AI智能体", subtitle: "实时语音交互数字领航员", desc: "基于 Live2D 与全模态融合，实现实时面部追踪与 AI 渲染的数字领航员系统。", tech: ["Live2D", "AI渲染", "实时追踪"], color: "green" },
+    { title: "JOLINK AI 系统", type: "AI终端", subtitle: "节点式AI集成终端", desc: "底层API联调与ComfyUI深度集成，支持本地MCP工具调用与向量记忆。", tech: ["Electron", "ComfyUI", "MCP"], color: "orange" }
+  ],
+  // Page 0 stats
+  heroStats: [
+    { label: "影视后期", value: "8年+", icon: "🎬" },
+    { label: "AI 项目", value: "12+", icon: "🤖" },
+    { label: "服务客户", value: "50+", icon: "🤝" },
+    { label: "视频管线", value: "3条", icon: "⚡" }
+  ],
+  // PRO side hero stats
+  proStats: [
+    { label: "年影视后期经验", value: "8+", color: "blue" },
+    { label: "核心项目主导", value: "3+", color: "green" },
+    { label: "人团队管理经验", value: "15+", color: "orange" }
+  ],
+  // PRO side info
+  proInfo: [
+    { icon: "📍", label: "所在地", value: "成都" },
+    { icon: "📅", label: "年龄", value: "32岁" },
+    { icon: "🎓", label: "学历", value: "本科" },
+    { icon: "💼", label: "经验", value: "8年" }
+  ],
+  // PRO side advantages
+  advantages: ["AI工作流深度整合", "视频自动化管线搭建", "全栈技术架构能力", "团队管理与项目交付"],
+  experience: [
+    { year: "2022.07-至今", company: "成都书声科技有限公司", role: "● 当前", color: "green", highlights: ["主导公司 AI 视频管线建设，研发自研 AI 终端 JOLINK", "负责通过模型微调（Lora）及 ComfyUI 节点流设计", "利用 Remotion 实现视频自动化渲染"], tags: ["AI工作流", "Remotion", "ComfyUI", "Lora微调"] },
+    { year: "2020.05-2021.08", company: "成都善可思文化传播有限公司", role: "后期主管", color: "orange", highlights: ["管理 15 人规模后期团队", "主导各类大中型影视 TVC", "成功交付中石油、环保厅等国家级单位项目"], tags: ["团队管理", "TVC制作", "项目交付"] }
+  ],
+  // PRO side skills
+  proSkills: [
+    { icon: "🤖", title: "AI流程架构", items: ["数字化视频渲染引擎", "AI终端开发", "企业工作流集成"], tech: ["React", "Remotion", "Electron", "ComfyUI"], color: "blue" },
+    { icon: "🎬", title: "影视后期制作", items: ["TVC商业广告", "特效合成", "导演与项目统筹"], tech: ["Premiere", "After Effects", "Cinema 4D", "DaVinci"], color: "green" },
+    { icon: "👥", title: "团队与项目管理", items: ["15+人团队管理", "项目交付与流程优化", "质量把控体系"], tech: ["团队协作", "流程设计", "质量把控"], color: "orange" }
+  ],
+  // PRO side clients
+  proClients: [
+    { name: "CCTV", type: "国家媒体", color: "blue" },
+    { name: "新华社", type: "国家媒体", color: "blue" },
+    { name: "中石油", type: "能源巨头", color: "orange" },
+    { name: "字节跳动", type: "互联网大厂", color: "green" },
+    { name: "环保厅", type: "政府机构", color: "blue" },
+    { name: "德阳市政府", type: "政府机构", color: "blue" }
+  ],
+  // PRO side portfolio
+  portfolioTabs: [
+    { id: "xinpianchang", label: "新片场视频", color: "blue" },
+    { id: "jolink", label: "JOLINK", color: "green" },
+    { id: "digital-human", label: "AI数字人", color: "green" },
+    { id: "ai-creative", label: "AI创意视频", color: "orange" },
+    { id: "real-ai", label: "实拍+AI", color: "blue" },
+    { id: "zcool", label: "平面设计", color: "green" }
+  ],
+  portfolioContent: {
+    xinpianchang: [
+      { title: "破题之路（中石油）", meta: "06:17 · 1801播放 · 企业形象" },
+      { title: "创新大赛暖场片", meta: "02:01 · 1505播放 · 文娱活动" },
+      { title: "红城卫士之利剑斩毒蝎", meta: "23:26 · 837播放 · 剧情" },
+      { title: "德阳宣传片", meta: "07:53 · 236播放 · 城市形象" }
+    ],
+    jolink: [
+      { title: "JOLINK 界面预览 1", meta: "节点式AI集成终端", img: true },
+      { title: "JOLINK 界面预览 2", meta: "ComfyUI深度集成", img: true }
+    ],
+    "digital-human": [
+      { title: "克隆人1.0", meta: "真人克隆基础版", video: true },
+      { title: "克隆人1.0合成", meta: "克隆人合成效果", video: true },
+      { title: "AI生成数字人", meta: "jimeng-2026-02-05", video: true },
+      { title: "多场景应用", meta: "jimeng-2026-02-09", video: true }
+    ],
+    "ai-creative": [
+      { title: "图生视频-电影大片", meta: "灰色隐秘 · 可灵kling", video: true },
+      { title: "镜头跟随-人物环绕", meta: "可灵kling", video: true },
+      { title: "镜头跟随-男子在海上", meta: "海上场景 · 可灵kling", video: true },
+      { title: "文生视频-超写实3D", meta: "3D渲染 · 可灵kling", video: true }
+    ],
+    "real-ai": [
+      { title: "非完整对称位置关系", meta: "实拍+AI融合", img: true },
+      { title: "完全对称关系", meta: "实拍+AI融合", img: true },
+      { title: "融合素材", meta: "实拍+AI融合", img: true },
+      { title: "动画融合", meta: "AnimateDiff", video: true },
+      { title: "静态融合", meta: "真人拍摄 + AI风格迁移", video: true }
+    ],
+    zcool: [
+      { title: "JOJO IP形象", meta: "平面设计", img: true },
+      { title: "产品设计", meta: "平面设计", img: true },
+      { title: "作品1", meta: "平面设计", img: true },
+      { title: "作品2", meta: "平面设计", img: true },
+      { title: "作品3", meta: "平面设计", img: true },
+      { title: "作品4", meta: "平面设计", img: true },
+      { title: "作品5", meta: "平面设计", img: true },
+      { title: "作品6", meta: "平面设计", img: true }
+    ]
+  },
+  // PRO side platforms
+  proPlatforms: [
+    { name: "新片场", desc: "13个视频作品", url: "https://xinpianchang.com/u10053048", icon: "▶", color: "blue" },
+    { name: "站酷", desc: "6组平面设计", url: "https://www.zcool.com.cn/u/19060388", icon: "▶", color: "green" }
+  ],
+  // Page 1: IDENTITY - Protocol cards
+  protocols: [
+    { title: "GEN_2.5", icon: "🧬", color: "#39FF14", desc: "全模态神经网络链", detail: "打通文本→图像→视频→语音四模态链路，支持在单一工作流中完成从创意到成品的全流程生成。基于 Stable Diffusion + Wan 的模型融合架构。" },
+    { title: "MCP_WF", icon: "💻", color: "#FF0040", desc: "本地智能体协议栈", detail: "基于 Model Context Protocol 的桌面级 AI 工作流引擎。支持本地工具调用、向量记忆持久化、ComfyUI 节点热插拔。" }
+  ],
+  // Page 2: TIMELINE - Assets with detailed descriptions
+  timelineAssets: [
+    { title: "Remotion 视频引擎", type: "image", url: "https://images.unsplash.com/photo-1551288049-bbbda546697a?q=80&w=800", desc: "React 驱动的视频自动化管线", detail: "用代码替代传统剪辑软件，将 React 组件映射为视频帧。支持参数化调整动画、批量渲染数千条视频变体。", impact: "制作效率提升 10x" },
+    { title: "JOLINK AI 终端", type: "image", url: "https://images.unsplash.com/photo-1518364538800-6da391fead8a?q=80&w=800", desc: "跨平台 AI 集成工作台", detail: "基于 Electron + React 构建的桌面应用，集成 ComfyUI 节点流编辑器、Prompt 管理器、模型切换面板。", impact: "AI 工具链统一入口" },
+    { title: "MICA 数字领航员", type: "video", url: "https://cdn.pixabay.com/vimeo/849424754/ai-generated-849424754.mp4?width=800", desc: "Live2D 实时语音桌宠", detail: "实时面部追踪 + 多模态语音同步的数字人。支持语音对话、屏幕感知、主动提醒。", impact: "情感化 AI 交互" },
+    { title: "风格迁移实验", type: "video", url: "https://cdn.pixabay.com/vimeo/852654921/scifi-852654921.mp4?width=800", desc: "Wan Fusion 场景重塑", detail: "利用 Wan Fusion 进行大规模场景风格迁移，将写实素材转为赛博朋克/水墨/油画风格。", impact: "一鱼多吃的素材复用" }
+  ],
+  // Page 3: GALLERY
+  galleryCategories: [
+    { id: "COMMERCIAL", color: "#39FF14", desc: "商业交付作品 — 国家级/500强客户实际产出", items: 23 },
+    { id: "EXPERIMENT", color: "#00F0FF", desc: "AI 实验项目 — 模型微调、风格迁移、生成式探索", items: 47 },
+    { id: "MINI_APP", color: "#FF0040", desc: "小程序/工具 — 遗憾清单、AI 助手等 Side Project", items: 6 }
+  ],
+  galleryItems: [
+    { title: 'JOLINK 终端界面', url: 'https://images.unsplash.com/photo-1551288049-bbbda546697a?q=80&w=1000', type:'image', desc:'Electron + React 构建的跨平台 AI 工作台，集成 ComfyUI 节点流编辑器与 Prompt 管理器' },
+    { title: 'MICA 交互协议', url: 'https://images.unsplash.com/photo-1518364538800-6da391fead8a?q=80&w=1000', type:'image', desc:'MCP 智能体交互协议架构图，展示本地工具调用与向量记忆持久化流程' },
+    { title: '数字人渲染管线', url: 'https://cdn.pixabay.com/vimeo/849424754/ai-generated-849424754.mp4?width=640', type:'video', desc:'实时面部追踪驱动的 Live2D 数字领航员，多模态语音与视觉毫秒级同步' },
+    { title: '场景风格迁移', url: 'https://cdn.pixabay.com/vimeo/852654921/scifi-852654921.mp4?width=640', type:'video', desc:'Wan Fusion 大规模场景风格重塑实验 — 赛博朋克/水墨/油画风格一键切换' }
+  ],
+  // Page 4: TERMINAL
+  terminalMessage: "所有像素皆可编程。我们不是在「做视频」，我们是在为视觉世界编写物理引擎。",
+  capabilities: [
+    { title: "AI 流程架构", icon: "🚀", problems: ["数字化视频渲染引擎", "AI 终端开发", "企业工作流集成"], tools: ["React", "Remotion", "Electron", "ComfyUI"] }
+  ],
+  partners: [
+    { name: "CCTV", icon: "📺" },
+    { name: "新华社", icon: "📰" },
+    { name: "中石油", icon: "⛽" },
+    { name: "字节跳动", icon: "🎵" }
+  ],
+  tags: ["REMOTION", "AI_AGENT", "MCP_PROTO", "REACT_ENGINE"],
+  tagDetails: {
+    "REMOTION": { desc: "基于 React 的视频自动化渲染框架。将 React 编程思维引入影视后期，实现视频资产的自动化渲染与生成。", icon: "🎬", page: 1 },
+    "AI_AGENT": { desc: "MICA AI 实时语音桌宠系统。Live2D 与全模态融合，支持实时面部追踪与毫秒级多模态同步。", icon: "🤖", page: 2 },
+    "MCP_PROTO": { desc: "Model Context Protocol 本地智能体协议。通过 MCP 扩展能力实现桌宠的工具调用与向量记忆。", icon: "🔗", page: 3 },
+    "REACT_ENGINE": { desc: "React 19 驱动的全栈引擎。节点式 AI 集成终端 JOLINK，底层 API 联调与 ComfyUI 深度集成。", icon: "⚛️", page: 4 }
+  },
+  neonColors: ["#39FF14", "#FF0040", "#00F0FF", "#BF00FF"]
+};
+
+// ===== MATRIX RAIN =====
+function MatrixRain() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    resize();
+    window.addEventListener('resize', resize);
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモ0123456789ABCDEF';
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+    const colors = ['#39FF14', '#00F0FF', '#FF0040', '#BF00FF'];
+    const draw = () => {
+      ctx.fillStyle = 'rgba(5,5,5,.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for(let i=0;i<drops.length;i++){
+        const char = chars[Math.floor(Math.random()*chars.length)];
+        ctx.fillStyle = colors[Math.floor(Math.random()*colors.length)];
+        ctx.globalAlpha = .5 + Math.random()*.5;
+        ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+        ctx.fillText(char, i*fontSize, drops[i]*fontSize);
+        ctx.globalAlpha = 1;
+        if(drops[i]*fontSize>canvas.height&&Math.random()>.975) drops[i]=0;
+        drops[i]++;
+      }
+    };
+    const interval = setInterval(draw, 50);
+    return () => { clearInterval(interval); window.removeEventListener('resize', resize); };
+  }, []);
+  return React.createElement('canvas', { ref: canvasRef, className: 'matrix-canvas' });
+}
+
+// ===== CUSTOM CURSOR =====
+function CustomCursor({proMode}) {
+  const cursorRef = useRef(null);
+  const trailRef = useRef(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const move = (e) => {
+      if(cursorRef.current){ cursorRef.current.style.left = e.clientX+'px'; cursorRef.current.style.top = e.clientY+'px'; }
+      if(trailRef.current) setTimeout(() => { if(trailRef.current){ trailRef.current.style.left = e.clientX+'px'; trailRef.current.style.top = e.clientY+'px'; } }, 80);
+    };
+    const down = () => setActive(true);
+    const up = () => setActive(false);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mousedown', down);
+    window.addEventListener('mouseup', up);
+    return () => { window.removeEventListener('mousemove', move); window.removeEventListener('mousedown', down); window.removeEventListener('mouseup', up); };
+  }, []);
+  return React.createElement(React.Fragment, null,
+    React.createElement('div', { ref: cursorRef, className: `custom-cursor ${active?'active':''} ${proMode?'pro-cursor':''}` }),
+    React.createElement('div', { ref: trailRef, className: 'cursor-trail' })
+  );
+}
+
+// ===== HUD CORNERS =====
+function HUDCorners({color}) {
+  const col = color || '#39FF14';
+  return React.createElement('div', { className: 'absolute inset-0 pointer-events-none', style: {zIndex:2} },
+    React.createElement('div', { className: 'absolute top-0 left-0', style: {width:30,height:30,borderTop:`2px solid ${col}`,borderLeft:`2px solid ${col}`} }),
+    React.createElement('div', { className: 'absolute top-0 right-0', style: {width:30,height:30,borderTop:`2px solid ${col}`,borderRight:`2px solid ${col}`} }),
+    React.createElement('div', { className: 'absolute bottom-0 left-0', style: {width:30,height:30,borderBottom:`2px solid ${col}`,borderLeft:`2px solid ${col}`} }),
+    React.createElement('div', { className: 'absolute bottom-0 right-0', style: {width:30,height:30,borderBottom:`2px solid ${col}`,borderRight:`2px solid ${col}`} })
+  );
+}
+
+// ===== OSCILLOSCOPE =====
+function Oscilloscope() {
+  return React.createElement('div', { className: 'oscilloscope w-full my-2' },
+    React.createElement('div', { className: 'oscilloscope-wave' })
+  );
+}
+
+// ===== LANDING PAGE =====
+function LandingPage({onSelect}) {
+  const particles = Array.from({length:25}, (_,i) => ({
+    left: Math.random()*100+'%',
+    top: Math.random()*100+'%',
+    delay: Math.random()*5+'s',
+    duration: 3+Math.random()*4+'s',
+    size: Math.random()*3+1+'px'
+  }));
+
+  return React.createElement('div', { className: 'h-screen w-full flex flex-col md:flex-row overflow-hidden relative bg-black' },
+    // LEFT: BIG
+    React.createElement('div', { className: 'flex-1 group relative cursor-pointer overflow-hidden z-10', onClick: () => onSelect('big') },
+      React.createElement(MatrixRain),
+      React.createElement('div', { className: 'absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-all duration-1000' }),
+      React.createElement('div', { className: 'absolute inset-0 opacity-15', style: { backgroundImage: 'linear-gradient(rgba(57,255,20,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,.08) 1px, transparent 1px)', backgroundSize: '60px 60px' } }),
+      React.createElement('div', { className: 'absolute top-[15%] left-[15%] w-[45%] h-[45%]', style: { background: 'radial-gradient(circle, rgba(57,255,20,.08) 0%, transparent 70%)', animation: 'breatheGlow 4s ease-in-out infinite' } }),
+      React.createElement('div', { className: 'absolute bottom-[5%] right-[5%] w-[40%] h-[40%]', style: { background: 'radial-gradient(circle, rgba(255,0,64,.06) 0%, transparent 70%)', animation: 'breatheGlow 5s ease-in-out 1s infinite' } }),
+      React.createElement('div', { className: 'absolute top-[55%] left-[55%] w-[35%] h-[35%]', style: { background: 'radial-gradient(circle, rgba(0,240,255,.05) 0%, transparent 70%)', animation: 'breatheGlow 6s ease-in-out 2s infinite' } }),
+      React.createElement('div', { className: 'relative h-full flex flex-col items-center justify-center p-8 text-center z-10' },
+        React.createElement('div', { className: 'absolute inset-6 pointer-events-none' }, React.createElement(HUDCorners, {color:'#39FF14'})),
+        React.createElement('h2', { className: 'text-[8rem] md:text-[13rem] tracking-tighter glitch-text font-cyber font-black transition-transform duration-700', style: {transform: 'rotate(-4deg)'} }, '有BIG'),
+        React.createElement('div', { className: 'bg-neon-green px-8 py-5 rounded-[2rem] border-4 border-black opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500', style: {boxShadow:'0 0 40px rgba(57,255,20,.5)'} },
+          React.createElement('p', { className: 'text-lg font-black text-black uppercase tracking-widest leading-none font-cyber' }, 'AI 实时智能体 / 数字化视频')
+        ),
+        React.createElement('button', { className: 'px-16 py-6 bg-white text-black rounded-full uppercase text-lg tracking-[.25em] hover:bg-neon-green hover:scale-110 transition-all border-8 border-black neon-border-cycle font-cyber font-bold mt-6' }, '立即激活'),
+        React.createElement('div', { className: 'array-stream w-full mt-8' })
+      )
+    ),
+    // DIVIDER
+    React.createElement('div', { className: 'landing-divider hidden md:block' }),
+    // RIGHT: PRO
+    React.createElement('div', { className: 'flex-1 group relative cursor-pointer overflow-hidden z-10', onClick: () => onSelect('pro') },
+      React.createElement('div', { className: 'absolute inset-0 pro-gradient-bg' }),
+      React.createElement('div', { className: 'noise-overlay' }),
+      React.createElement('div', { className: 'absolute top-[25%] left-[25%] w-[55%] h-[55%]', style: { background: 'radial-gradient(circle, rgba(212,168,85,.05) 0%, transparent 70%)', transition: 'all 1s ease' } }),
+      React.createElement('div', { className: 'absolute inset-0 overflow-hidden pointer-events-none' },
+        ...particles.map((p,i) => React.createElement('div', { key:i, className:'landing-particle', style:{left:p.left,top:p.top,animationDelay:p.delay,animationDuration:p.duration,width:p.size,height:p.size} }))
+      ),
+      React.createElement('div', { className: 'relative h-full flex flex-col items-center justify-center p-8 text-center z-10' },
+        React.createElement('h2', { className: 'text-[7rem] md:text-[12rem] tracking-tight text-white/8 group-hover:text-white transition-all duration-1000 font-cyber font-black', style:{transform:'scale(1)'} }, 'PRO'),
+        React.createElement('div', { className: 'opacity-0 group-hover:opacity-100 translate-y-6 group-hover:translate-y-0 transition-all duration-700' },
+          React.createElement('p', { className: 'text-xl text-pro-amber font-semibold tracking-[.2em] uppercase' }, '专业履历 · 深层大气')
+        ),
+        React.createElement('button', { className: 'px-14 py-5 bg-transparent text-pro-amber rounded-full uppercase text-sm tracking-[.25em] border-2 border-pro-amber/25 hover:bg-pro-amber/8 hover:border-pro-amber transition-all duration-500 font-semibold mt-6' }, '进入履历'),
+        React.createElement('div', { className: 'array-stream pro-array-stream w-full mt-8' })
+      )
+    ),
+    React.createElement('div', { className: 'scanline' })
+  );
+}
+
+// ===== BIG RESUME =====
+function BigResume({onBack}) {
+  const [page, setPage] = useState(0);
+  const [trans, setTrans] = useState(false);
+  const [stack, setStack] = useState(0);
+  const [activeTag, setActiveTag] = useState(null);
+  const [tooltip, setTooltip] = useState(null);
+  const tagRefs = useRef({});
+  const pages = ['LAUNCH', 'IDENTITY', 'TIMELINE', 'GALLERY', 'TERMINAL'];
+  const nc = DATA.neonColors;
+
+  const next = () => { if(page<pages.length-1){ setTrans(true); setTimeout(()=>{setPage(p=>p+1);setTrans(false)},500); } };
+  const prev = () => { if(page>0){ setTrans(true); setTimeout(()=>{setPage(p=>p-1);setTrans(false)},500); } };
+
+  // Tag click handler with ripple effect
+  const handleTagClick = (tag, idx, e) => {
+    // Create ripple
+    const rect = e.target.getBoundingClientRect();
+    const ripple = document.createElement('div');
+    ripple.className = 'tag-ripple';
+    ripple.style.left = (e.clientX - rect.left) + 'px';
+    ripple.style.top = (e.clientY - rect.top) + 'px';
+    ripple.style.background = nc[idx%4] + '40';
+    e.target.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    // Toggle active tag
+    if (activeTag === tag) {
+      setActiveTag(null);
+      setTooltip(null);
+    } else {
+      setActiveTag(tag);
+      // Show tooltip near the clicked tag
+      setTooltip({
+        tag,
+        x: rect.left + rect.width/2,
+        y: rect.top - 12,
+        color: nc[idx%4],
+        detail: DATA.tagDetails[tag]
+      });
+      // Pulse effect
+      const el = e.target;
+      el.classList.add('tag-pulse');
+      setTimeout(() => el.classList.remove('tag-pulse'), 2400);
+      // Navigate to related page after short delay
+      setTimeout(() => {
+        const targetPage = DATA.tagDetails[tag]?.page;
+        if (targetPage !== undefined && targetPage !== page) {
+          setTrans(true);
+          setTimeout(() => { setPage(targetPage); setTrans(false); }, 500);
+        }
+      }, 1500);
+    }
+  };
+
+  // Close tooltip on external click
+  useEffect(() => {
+    if (!tooltip) return;
+    const close = (e) => {
+      if (!e.target.closest('.tag-wrapper')) { setActiveTag(null); setTooltip(null); }
+    };
+    document.addEventListener('click', close);
+    return () => document.removeEventListener('click', close);
+  }, [tooltip]);
+
+  const galleryItems = DATA.galleryItems;
+
+  const renderPage = () => {
+    switch(page) {
+      case 0: return React.createElement('div', { className: 'text-center space-y-8' },
+        React.createElement(Oscilloscope),
+        React.createElement('div', { className: 'flex items-center justify-center gap-3 neon-text-cycle' },
+          React.createElement('span', { className: 'text-2xl' }, '🚀'),
+          React.createElement('span', { className: 'font-mono uppercase tracking-[.5em] text-sm font-cyber' }, 'Deployment_Sequence_Ready')
+        ),
+        React.createElement('h1', { className: 'text-[10vw] font-black italic uppercase leading-[.8] tracking-tighter font-cyber' },
+          'SPACE ', React.createElement('span', { className: 'neon-green' }, 'DISTORTION'),
+          React.createElement('br'),
+          React.createElement('span', { className: 'stroke-green' }, 'MICA_2026')
+        ),
+        // Hero subtitle
+        React.createElement('p', { className: 'text-lg text-gray-400 font-bold italic max-w-2xl mx-auto leading-relaxed' },
+          'AI 实时智能体 / 数字化视频渲染管线 / React 驱动的视觉生产引擎'
+        ),
+        // Tech tags
+        React.createElement('div', { className: 'flex flex-wrap justify-center gap-4' },
+          ...DATA.tags.map((t,i) => React.createElement('span', {
+            key:t,
+            className: `tag-wrapper px-8 py-3 border-2 rounded-full text-lg font-black uppercase italic bg-black/50 backdrop-blur-md cursor-pointer rgb-shift font-cyber transition-all duration-300 ${activeTag===t?'tag-active':''}`,
+            style:{borderColor:activeTag===t?nc[i%4]:nc[i%4]+'40',color:nc[i%4],boxShadow:activeTag===t?`0 0 20px ${nc[i%4]}60, inset 0 0 20px ${nc[i%4]}15`:''},
+            onClick: (e) => handleTagClick(t, i, e),
+            title: DATA.tagDetails[t]?.desc || ''
+          },
+            React.createElement('span', { style:{fontSize:'1.2em',marginRight:'6px',verticalAlign:'-2px'} }, DATA.tagDetails[t]?.icon || '◆'),
+            t
+          ))
+        ),
+        // Tooltip overlay
+        tooltip && React.createElement('div', {
+          className: 'tag-tooltip show',
+          style: { left: tooltip.x + 'px', top: tooltip.y + 'px', transform: 'translate(-50%, -100%)', background: 'rgba(0,0,0,.9)', border: `1px solid ${tooltip.color}40`, boxShadow: `0 8px 32px rgba(0,0,0,.6), 0 0 16px ${tooltip.color}20`, color: '#ddd' }
+        },
+          React.createElement('div', { style:{fontSize:13,fontWeight:700,color:tooltip.color,marginBottom:4,display:'flex',alignItems:'center',gap:6,fontFamily:'Orbitron, sans-serif',letterSpacing:'.1em',textTransform:'uppercase'} },
+            React.createElement('span', null, tooltip.detail?.icon || ''), tooltip.tag
+          ),
+          React.createElement('div', { style:{fontSize:10.5,color:'#aaa'} }, tooltip.detail?.desc || ''),
+          React.createElement('div', { style:{marginTop:6,fontSize:9,color:tooltip.color+'60',textAlign:'center',letterSpacing:'.2em'} }, '⬡ NAVIGATING TO PHASE '+(tooltip.detail?.page+1)+' ⬡')
+        ),
+        // Stats row
+        React.createElement('div', { className: 'flex justify-center gap-8 mt-8' },
+          ...DATA.heroStats.map((s,i) => React.createElement('div', { key:i, className: 'text-center' },
+            React.createElement('div', { className: 'text-2xl mb-1' }, s.icon),
+            React.createElement('div', { className: 'text-3xl font-black font-cyber', style:{color:nc[i%4]} }, s.value),
+            React.createElement('div', { className: 'text-[10px] font-mono uppercase tracking-widest text-gray-500 mt-1' }, s.label)
+          ))
+        ),
+        // Portfolio platform links
+        React.createElement('div', { className: 'flex justify-center gap-6 mt-10' },
+          React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'group px-8 py-4 bg-black/60 backdrop-blur-md border-2 border-white/10 rounded-full text-sm font-black uppercase italic tracking-wider font-cyber hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(57,255,20,.3)] transition-all text-gray-400 hover:text-neon-green no-underline' },
+            React.createElement('span', { className:'mr-2' }, '▶'), 'XPC ', React.createElement('span', { className:'text-[10px] font-mono text-gray-600 group-hover:text-neon-green/60' }, '13_VIDEOS')
+          ),
+          React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'group px-8 py-4 bg-black/60 backdrop-blur-md border-2 border-white/10 rounded-full text-sm font-black uppercase italic tracking-wider font-cyber hover:border-electric-cyan/50 hover:shadow-[0_0_20px_rgba(0,240,255,.3)] transition-all text-gray-400 hover:text-electric-cyan no-underline' },
+            React.createElement('span', { className:'mr-2' }, '◆'), 'ZCOOL ', React.createElement('span', { className:'text-[10px] font-mono text-gray-600 group-hover:text-electric-cyan/60' }, '6_WORKS')
+          )
+        ),
+        React.createElement(Oscilloscope)
+      );
+      case 1: return React.createElement('div', { className: 'max-w-6xl w-full grid lg:grid-cols-2 gap-16 items-center' },
+        React.createElement('div', { className: 'space-y-8' },
+          React.createElement('span', { className: 'text-7xl font-black italic stroke-green opacity-30 font-cyber' }, '01'),
+          React.createElement('h2', { className: 'text-6xl font-black italic uppercase leading-tight font-cyber' }, '核心', React.createElement('span', { className: 'cyber-red' }, '协议')),
+          // Philosophy quote
+          React.createElement('p', { className: 'text-lg text-gray-400 font-bold italic leading-relaxed border-l-4 border-phantom-purple pl-6' },
+            React.createElement('span', { style:{color:'#BF00FF',marginRight:4} }, '"'),
+            '我们不仅是创作者，我们是系统架构师。通过代码重写视效生产的物理规律。',
+            React.createElement('span', { style:{color:'#BF00FF'} }, '"')
+          ),
+          // Personal intro
+          React.createElement('p', { className: 'text-sm text-gray-500 font-medium leading-relaxed' },
+            '7 年影视后期深耕，从剪辑师转型为 AI 流程架构师。现任成都书声科技 AI 视频管线负责人，主导公司从传统后期向智能化视频生产的转型。'
+          ),
+          // Protocol cards with details
+          React.createElement('div', { className: 'flex gap-5' },
+            ...DATA.protocols.map((p,i) => React.createElement('div', { key:i, className: 'flex-1 bg-white/5 border-2 border-white/10 rounded-[2rem] p-7 card-perspective rgb-shift relative', style:{position:'relative'} },
+              React.createElement(HUDCorners, {color:p.color}),
+              React.createElement('span', { className: 'text-3xl mb-3 block' }, p.icon),
+              React.createElement('h4', { className: 'text-2xl font-black italic mb-1 font-cyber', style:{color:p.color} }, p.title),
+              React.createElement('p', { className: 'text-[10px] font-mono text-gray-400 tracking-widest uppercase mb-2' }, p.desc),
+              React.createElement('p', { className: 'text-[10px] text-gray-500 leading-relaxed' }, p.detail)
+            ))
+          )
+        ),
+        // Right: image with overlay annotations
+        React.createElement('div', { className: 'relative' },
+          React.createElement('div', { className: 'w-full aspect-[4/5] bg-black rounded-[3rem] border-8 border-white/5 overflow-hidden relative shadow-2xl rgb-shift' },
+            React.createElement('img', { src:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000', className:'w-full h-full object-cover grayscale opacity-35', alt:'系统架构示意' }),
+            React.createElement('div', { className: 'absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent' }),
+            // Annotations
+            React.createElement('div', { className: 'absolute top-8 left-6 px-4 py-2 bg-black/80 backdrop-blur-md border border-neon-green/30 rounded-xl text-[10px] font-mono neon-green' }, '⬢ NEURAL_CORE // GEN_2.5'),
+            React.createElement('div', { className: 'absolute top-20 right-6 px-4 py-2 bg-black/80 backdrop-blur-md border border-electric-cyan/30 rounded-xl text-[10px] font-mono electric-cyan' }, '⬢ PROTOCOL_STACK // MCP_WF'),
+            React.createElement('div', { className: 'absolute bottom-12 left-8 px-4 py-2 bg-black/80 backdrop-blur-md border border-cyber-red/30 rounded-xl text-[10px] font-mono cyber-red' }, '⬢ RENDER_PIPE // REMOTION'),
+            // Center indicator
+            React.createElement('div', { className: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center' },
+              React.createElement('span', { className: 'text-6xl mb-4 flicker' }, '⚡'),
+              React.createElement('span', { className: 'font-mono text-sm tracking-[.3em] neon-green font-cyber' }, 'SYSTEM_ACTIVE')
+            ),
+            React.createElement(HUDCorners, {color:'#BF00FF'})
+          ),
+          React.createElement('div', { className: 'absolute -top-8 -right-8 w-32 h-32 neon-border-cycle', style:{borderTop:'4px solid',borderRight:'4px solid',borderRadius:'0 3rem 0 0'} }),
+          React.createElement('div', { className: 'absolute -bottom-8 -left-8 w-32 h-32', style:{borderBottom:'4px solid #FF0040',borderLeft:'4px solid #FF0040',borderRadius:'0 0 0 3rem',animation:'neonBorderColor 4s linear 2s infinite'} })
+        )
+      );
+      case 2: return React.createElement('div', { className: 'w-full' },
+        React.createElement('div', { className: 'max-w-6xl mx-auto px-8 mb-10 flex justify-between items-end' },
+          React.createElement('div', null,
+            React.createElement('h2', { className: 'text-5xl font-black italic uppercase font-cyber' }, '数字化', React.createElement('br'), React.createElement('span', { className: 'stroke-purple' }, '动态资产')),
+            React.createElement('p', { className: 'text-sm text-gray-500 font-medium mt-3 max-w-lg' }, '以下是我主导开发的 4 个核心资产。每个项目都代表了从传统后期向 AI 驱动工作流的范式转移。')
+          ),
+          React.createElement('div', { className: 'flex flex-col items-end gap-3' },
+            React.createElement('div', { className: 'flex gap-1.5' }, ...Array.from({length:16}, (_,i) => React.createElement('div', { key:i, className:'w-1 h-6 rounded-full', style:{backgroundColor:i<10?nc[i%4]:'rgba(255,255,255,.1)'} }))),
+            React.createElement('span', { className: 'text-[10px] font-mono uppercase tracking-widest text-gray-500 font-cyber' }, 'Asset_Archive_Loading...')
+          )
+        ),
+        React.createElement(Oscilloscope),
+        React.createElement('div', { className: 'flex gap-5 overflow-x-auto px-8 pb-16 mt-4', style:{scrollbarWidth:'none'} },
+          ...DATA.timelineAssets.map((item,i) =>
+            React.createElement('div', { key:i, className: 'min-w-[380px] bg-black rounded-[2rem] border-4 overflow-hidden relative shrink-0 transition-all shadow-2xl rgb-shift flex flex-col', style:{borderColor:nc[i%4]+'30'} },
+              // Media
+              React.createElement('div', { className: 'aspect-video relative overflow-hidden' },
+                item.type==='video' ?
+                  React.createElement('video', { src:item.url, autoPlay:true, muted:true, loop:true, className:'w-full h-full object-cover' })
+                  : React.createElement('img', { src:item.url, className:'w-full h-full object-cover', alt:item.title }),
+                React.createElement('div', { className: 'absolute inset-0 bg-black/40 hover:bg-transparent transition-all' }),
+                React.createElement(HUDCorners, {color:nc[i%4]})
+              ),
+              // Info section
+              React.createElement('div', { className: 'p-5 space-y-3' },
+                React.createElement('div', null,
+                  React.createElement('span', { className: 'text-[9px] font-black uppercase tracking-widest font-cyber', style:{color:nc[i%4]} }, 'PROJECT_'+String(i+1).padStart(2,'0')),
+                  React.createElement('h4', { className: 'text-xl font-black italic uppercase leading-none mt-1 font-cyber text-white' }, item.title)
+                ),
+                React.createElement('p', { className: 'text-xs text-gray-400 font-medium leading-relaxed' }, item.detail),
+                React.createElement('div', { className: 'flex items-center gap-2 pt-1' },
+                  React.createElement('div', { className: 'w-1.5 h-1.5 rounded-full', style:{backgroundColor:nc[i%4]} }),
+                  React.createElement('span', { className: 'text-[10px] font-mono font-bold', style:{color:nc[i%4]} }, item.impact)
+                ),
+                // Portfolio link
+                React.createElement('a', { href: i<2 ? 'https://xinpianchang.com/u10053048' : (i===2 ? 'https://www.zcool.com.cn/u/19060388' : 'https://xinpianchang.com/u10053048'), target:'_blank', className:'inline-flex items-center gap-2 px-4 py-2 border rounded-full text-[9px] font-mono uppercase tracking-widest hover:bg-white/5 transition-all mt-2 no-underline', style:{borderColor:nc[i%4]+'40',color:nc[i%4]} },
+                  React.createElement('span', null, '▶'), 'VIEW_WORK'
+                )
+              )
+            )
+          )
+        )
+      );
+      case 3: return React.createElement('div', { className: 'max-w-6xl w-full grid lg:grid-cols-2 gap-20 items-center' },
+        React.createElement('div', { className: 'space-y-8' },
+          React.createElement('div', { className: 'space-y-3' },
+            React.createElement('div', { className: 'flex items-center gap-3' },
+              React.createElement('span', { className: 'text-5xl font-black italic stroke-green opacity-30 font-cyber' }, '04'),
+              React.createElement('div', { className: 'h-px flex-1 bg-white/10' })
+            ),
+            React.createElement('h2', { className: 'text-5xl font-black italic uppercase leading-none font-cyber' }, '视觉孤岛'),
+            React.createElement('div', { className: 'font-mono text-[10px] tracking-[.4em] text-gray-500 uppercase' }, 'High_Entropy_Assets')
+          ),
+          React.createElement('p', { className: 'text-lg text-gray-500 font-bold italic leading-relaxed' }, '"每一帧都是独立的宇宙。点击卡片以探索不同的视觉逻辑。"'),
+          // Category cards with descriptions
+          React.createElement('div', { className: 'space-y-3' },
+            ...DATA.galleryCategories.map((c,i) => React.createElement('div', { key:c.id, className: 'p-4 border rounded-xl cursor-pointer rgb-shift transition-all hover:bg-white/5', style:{borderColor:nc[i%4]+'20'} },
+              React.createElement('div', { className: 'flex items-center justify-between' },
+                React.createElement('span', { className: 'text-xs font-black tracking-widest font-cyber', style:{color:nc[i%4]} }, c.id),
+                React.createElement('span', { className: 'text-[9px] font-mono text-gray-600' }, c.items+' items')
+              ),
+              React.createElement('p', { className: 'text-[10px] text-gray-500 font-medium mt-1.5 leading-relaxed' }, c.desc)
+            ))
+          ),
+          React.createElement('div', { className: 'flex gap-3 items-center neon-text-cycle font-black italic font-cyber text-sm' },
+            React.createElement('span', { className: 'text-lg' }, '👆'),
+            React.createElement('span', null, 'CLICK CARD TO ROTATE DECK')
+          ),
+          // Portfolio platform links
+          React.createElement('div', { className: 'space-y-3 pt-4' },
+            React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'flex items-center gap-3 p-3 border border-white/10 rounded-xl hover:border-neon-green/30 hover:bg-white/[.02] transition-all no-underline' },
+              React.createElement('span', { className:'text-lg' }, '▶'),
+              React.createElement('div', null,
+                React.createElement('span', { className:'text-xs font-bold text-white' }, '新片场'),
+                React.createElement('span', { className:'text-[9px] font-mono text-gray-500 ml-2' }, '13 videos · 企业形象/TVC/剧情')
+              )
+            ),
+            React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'flex items-center gap-3 p-3 border border-white/10 rounded-xl hover:border-electric-cyan/30 hover:bg-white/[.02] transition-all no-underline' },
+              React.createElement('span', { className:'text-lg' }, '◆'),
+              React.createElement('div', null,
+                React.createElement('span', { className:'text-xs font-bold text-white' }, '站酷'),
+                React.createElement('span', { className:'text-[9px] font-mono text-gray-500 ml-2' }, '6 groups · IP设计/平面/产品设计')
+              )
+            )
+          )
+        ),
+        React.createElement('div', { className: 'relative h-[550px] flex items-center justify-center' },
+          ...galleryItems.map((asset,i) => {
+            const offset = ((i - stack + galleryItems.length) % galleryItems.length);
+            return React.createElement('div', {
+              key:i, onClick:()=>setStack(prev=>(prev+1)%galleryItems.length),
+              className:'absolute w-[380px] aspect-[3/4] bg-white rounded-[2rem] border-[10px] border-black shadow-2xl cursor-pointer active:scale-95 overflow-hidden',
+              style:{zIndex:galleryItems.length-offset,transform:`rotate(${offset*8}deg) translateX(${offset*25}px) translateY(${offset*8}px) scale(${1-offset*.05})`,opacity:1-offset*.2,pointerEvents:offset===0?'auto':'none',borderColor:offset===0?nc[i%4]:'#000',boxShadow:offset===0?`0 0 25px ${nc[i%4]}40`:'none',transition:'all .5s cubic-bezier(.34,1.56,.64,1)'}
+            },
+              // Media
+              asset.type==='video' ?
+                React.createElement('video', { src:asset.url, autoPlay:true, muted:true, loop:true, className:'w-full h-full object-cover rounded-[1rem]' })
+                : React.createElement('img', { src:asset.url, className:'w-full h-full object-cover rounded-[1rem]', alt:asset.title }),
+              // Bottom info bar
+              React.createElement('div', { className: 'absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black via-black/80 to-transparent' },
+                React.createElement('h4', { className: 'text-xl font-black italic uppercase leading-none font-cyber text-white' }, asset.title),
+                React.createElement('p', { className: 'text-[10px] text-gray-400 font-medium mt-1.5 leading-relaxed' }, asset.desc)
+              )
+            );
+          })
+        )
+      );
+      case 4: return React.createElement('div', { className: 'max-w-4xl w-full text-center space-y-10' },
+        React.createElement('div', { className: 'relative inline-block' },
+          React.createElement('div', { className: 'absolute inset-0 bg-cyber-red/15 blur-[80px] rounded-full animate-pulse' }),
+          React.createElement('div', { className: 'absolute inset-0 bg-electric-cyan/8 blur-[60px] rounded-full animate-pulse', style:{animationDelay:'1s'} }),
+          React.createElement('h2', { className: 'text-[8vw] font-black italic uppercase leading-none tracking-tighter relative z-10 glitch-text font-cyber' }, 'MICA_SIGNAL')
+        ),
+        // Closing message
+        React.createElement('div', { className: 'relative' },
+          React.createElement('div', { className: 'absolute inset-0 bg-phantom-purple/10 blur-[60px] rounded-full' }),
+          React.createElement('p', { className: 'text-xl text-gray-300 italic font-medium leading-relaxed max-w-2xl mx-auto relative z-10' },
+            React.createElement('span', { style:{color:'#BF00FF',fontSize:'1.5em'} }, '"'), DATA.terminalMessage, React.createElement('span', { style:{color:'#BF00FF',fontSize:'1.5em'} }, '"')
+          )
+        ),
+        // Contact cards
+        React.createElement('div', { className: 'grid md:grid-cols-2 gap-6' },
+          React.createElement('div', { className: 'p-8 border-4 border-white/10 rounded-[2.5rem] hover:border-cyber-red transition-all bg-black/40 backdrop-blur-md rgb-shift relative' },
+            React.createElement(HUDCorners, {color:'#FF0040'}),
+            React.createElement('div', { className:'text-3xl mb-4' }, '✉️'),
+            React.createElement('p', { className: 'text-lg font-bold tracking-tight font-cyber text-white' }, DATA.email),
+            React.createElement('p', { className: 'text-[9px] font-mono text-gray-500 mt-2' }, 'PRIMARY_COMM_LINK')
+          ),
+          React.createElement('div', { className: 'p-8 border-4 border-white/10 rounded-[2.5rem] hover:border-phantom-purple transition-all bg-black/40 backdrop-blur-md rgb-shift relative' },
+            React.createElement(HUDCorners, {color:'#BF00FF'}),
+            React.createElement('div', { className:'text-3xl mb-4' }, '📱'),
+            React.createElement('p', { className: 'text-lg font-bold tracking-tight font-cyber text-white' }, DATA.phone),
+            React.createElement('p', { className: 'text-[9px] font-mono text-gray-500 mt-2' }, 'SECONDARY_COMM_LINK')
+          )
+        ),
+        // Partners
+        React.createElement('div', { className: 'pt-4' },
+          React.createElement('p', { className: 'text-[9px] font-mono uppercase tracking-[.4em] text-gray-600 mb-4' }, 'Trusted_By / 合作单位'),
+          React.createElement('div', { className: 'flex flex-wrap justify-center gap-6' },
+            ...DATA.partners.map((p,i) => React.createElement('div', { key:i, className: 'px-5 py-3 bg-white/5 border border-white/10 rounded-full text-sm font-bold font-cyber text-gray-400 hover:border-neon-green/30 hover:text-white transition-all' },
+              React.createElement('span', { className: 'mr-2' }, p.icon), p.name
+            ))
+          )
+        ),
+        // Portfolio platform links
+        React.createElement('div', { className: 'pt-6' },
+          React.createElement('p', { className: 'text-[9px] font-mono uppercase tracking-[.4em] text-gray-600 mb-4' }, 'Portfolio_Links / 作品平台'),
+          React.createElement('div', { className: 'flex flex-wrap justify-center gap-4' },
+            React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'group px-6 py-3 border-2 border-white/10 rounded-full font-black uppercase italic text-sm font-cyber hover:border-neon-green/50 hover:shadow-[0_0_15px_rgba(57,255,20,.25)] transition-all text-gray-400 hover:text-neon-green no-underline' },
+              '▶ XPC ', React.createElement('span', { className:'text-[9px] font-mono text-gray-600 group-hover:text-neon-green/60' }, '13_VIDEOS')
+            ),
+            React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'group px-6 py-3 border-2 border-white/10 rounded-full font-black uppercase italic text-sm font-cyber hover:border-electric-cyan/50 hover:shadow-[0_0_15px_rgba(0,240,255,.25)] transition-all text-gray-400 hover:text-electric-cyan no-underline' },
+              '◆ ZCOOL ', React.createElement('span', { className:'text-[9px] font-mono text-gray-600 group-hover:text-electric-cyan/60' }, '6_GROUPS')
+            )
+          )
+        ),
+        React.createElement('button', { onClick:()=>setPage(0), className:'px-16 py-8 border-4 border-neon-green rounded-full font-black uppercase text-xl tracking-[.4em] hover:bg-neon-green hover:text-black transition-all neon-border-cycle font-cyber' }, 'REBOOT_SYSTEM')
+      );
+      default: return null;
+    }
+  };
+
+  return React.createElement('div', { className: 'bg-[#050505] text-white min-h-screen relative overflow-hidden flex flex-col' },
+    React.createElement(CustomCursor),
+    React.createElement(MatrixRain),
+    React.createElement('div', { className: 'fixed inset-0 pointer-events-none z-0' },
+      React.createElement('div', { className: 'absolute inset-0', style:{backgroundImage:'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")',opacity:.08} }),
+      React.createElement('div', { className: 'absolute inset-0 opacity-15', style:{backgroundImage:'radial-gradient(circle at center, transparent 0%, rgba(57,255,20,.03) 100%), linear-gradient(rgba(57,255,20,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,.04) 1px, transparent 1px)',backgroundSize:'cover, 60px 60px, 60px 60px',perspective:'1000px',transform:'perspective(1000px) rotateX(20deg) scale(1.2)'} }),
+      React.createElement('div', { className: 'absolute -top-[10%] -right-[10%] w-[50%] h-[50%]', style:{background:'radial-gradient(circle, rgba(191,0,255,.08) 0%, transparent 70%)',animation:'breatheGlow 5s ease-in-out infinite'} }),
+      React.createElement('div', { className: 'absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%]', style:{background:'radial-gradient(circle, rgba(255,0,64,.06) 0%, transparent 70%)',animation:'breatheGlow 6s ease-in-out 1s infinite'} }),
+      React.createElement('div', { className: 'absolute top-[40%] left-[30%] w-[35%] h-[35%]', style:{background:'radial-gradient(circle, rgba(0,240,255,.05) 0%, transparent 70%)',animation:'breatheGlow 7s ease-in-out 2s infinite'} })
+    ),
+    // Shutter overlay
+    React.createElement('div', { className: 'fixed inset-0 z-[9999] transition-transform duration-500 pointer-events-none',
+      style: { background: 'linear-gradient(135deg, #39FF14, #00F0FF, #FF0040, #BF00FF)', transform: trans ? 'translateX(0%)' : 'translateX(100%)' }
+    }),
+    // NAV
+    React.createElement('nav', { className: 'fixed top-0 left-0 w-full p-6 z-[1000] flex justify-between items-center' },
+      React.createElement('div', { className: 'flex items-center gap-4' },
+        React.createElement('div', { className: 'w-14 h-14 bg-neon-green text-black rounded-full flex items-center justify-center font-black italic text-xl shadow-[0_0_25px_#39FF14] breathe-glow font-cyber' }, 'BIG'),
+        React.createElement('div', { className: 'hidden lg:flex flex-col' },
+          React.createElement('span', { className: 'text-[9px] font-mono tracking-[.4em] neon-green uppercase font-cyber' }, 'Station_Phase: '+pages[page]),
+          React.createElement('div', { className: 'flex gap-1 mt-1' },
+            ...pages.map((_,i) => React.createElement('div', { key:i, className:'h-1 flex-1 min-w-[16px] rounded-full transition-all duration-500',
+              style:{backgroundColor:i<=page?nc[i%4]:'rgba(255,255,255,.1)',boxShadow:i<=page?`0 0 6px ${nc[i%4]}40`:''}
+            }))
+          )
+        )
+      ),
+      React.createElement('div', { className: 'flex items-center gap-3' },
+        React.createElement('button', { onClick:onBack, className:'p-4 bg-white/5 border border-white/10 rounded-full text-white/40 hover:text-white hover:border-cyber-red transition-all' }, '✕'),
+        React.createElement('button', { onClick:prev, disabled:page===0, className:`p-5 border-2 border-white/10 rounded-full transition-all ${page===0?'opacity-20':'hover:border-electric-cyan hover:text-electric-cyan'}` }, '◂'),
+        React.createElement('button', { onClick:next, disabled:page===pages.length-1, className:`p-5 bg-neon-green text-black font-black uppercase rounded-full tracking-widest text-xs flex items-center gap-3 border-4 border-black transition-all font-cyber ${page===pages.length-1?'opacity-20':'hover:scale-105 active:scale-95 breathe-glow'}` }, 'NEXT ▸')
+      )
+    ),
+    // MAIN
+    React.createElement('main', { className: 'flex-1 flex flex-col items-center justify-center p-8 relative z-10' }, renderPage()),
+    // FOOTER
+    React.createElement('footer', { className: 'p-8 flex justify-between items-center relative z-50' },
+      React.createElement('div', { className: 'text-[9px] font-mono text-gray-500 uppercase tracking-widest italic font-cyber' }, 'Visual_Framework_Powered_by_MICA'),
+      React.createElement('div', { className: 'flex gap-3' },
+        React.createElement('div', { className: 'w-10 h-10 bg-white/5 border border-neon-green/20 rounded-full flex items-center justify-center text-neon-green font-black italic text-[10px] font-cyber' }, 'CH'),
+        React.createElement('div', { className: 'w-10 h-10 bg-white/5 border border-electric-cyan/20 rounded-full flex items-center justify-center text-electric-cyan font-black italic text-[10px] font-cyber' }, 'EN')
+      )
+    )
+  );
+}
+
+// ===== CHATBOT =====
+function ChatBot() {
+  const [open, setOpen] = useState(false);
+  return React.createElement('div', { className: 'fixed bottom-8 right-8 z-[2000]' },
+    open && React.createElement('div', { className: 'w-[380px] h-[550px] bg-[#050505] border-4 border-neon-green/40 rounded-[3rem] shadow-[0_0_60px_rgba(57,255,20,.25)] flex flex-col overflow-hidden mb-6 animate-in backdrop-blur-3xl' },
+      React.createElement('div', { className: 'p-8 bg-neon-green text-black flex justify-between items-center' },
+        React.createElement('div', { className: 'flex items-center gap-3' },
+          React.createElement('div', { className: 'pulse-dot', style:{background:'black'} }),
+          React.createElement('span', { className: 'text-xs font-black uppercase tracking-[.25em] italic font-cyber' }, 'MICA_NAV_CORE_V3')
+        ),
+        React.createElement('button', { onClick:()=>setOpen(false), className:'hover:rotate-90 transition-transform', style:{fontSize:20} }, '✕')
+      ),
+      React.createElement('div', { className: 'flex-1 overflow-y-auto p-8 space-y-6 bg-black' },
+        React.createElement('div', { className: 'flex justify-start' },
+          React.createElement('div', { className: 'max-w-[85%] p-6 rounded-[1.5rem] text-sm leading-relaxed bg-white/5 text-gray-300 border border-white/10 italic' }, '你好！我是领航员 MICA。星际链路已就绪。你想探讨 Remotion 的视频生成效率，还是看看桌宠的 MCP 扩展能力？')
+        )
+      ),
+      React.createElement('div', { className: 'p-8 bg-white/5 border-t border-white/10 flex gap-3' },
+        React.createElement('input', { placeholder:'Initiate comms...', className:'flex-1 bg-black border border-white/10 rounded-xl px-6 text-sm py-4 focus:outline-none focus:border-neon-green transition-all font-cyber text-[11px]' }),
+        React.createElement('button', { className:'bg-neon-green p-4 rounded-xl shadow-lg hover:scale-110 active:scale-95 transition-all', style:{fontSize:20} }, '➤')
+      )
+    ),
+    React.createElement('button', { onClick:()=>setOpen(!open), className:'w-24 h-24 bg-neon-green text-black rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(57,255,20,.5)] hover:scale-110 active:scale-90 transition-all border-[10px] border-black breathe-glow', style:{fontSize:36} }, open ? '✕' : '💬')
+  );
+}
+
+// ===== PRO RESUME =====
+function ProResume({onBack}) {
+  const [active, setActive] = useState(0);
+  const [activeTab, setActiveTab] = useState('xinpianchang');
+  const sections = ['概览','简介','经历','项目','作品','能力','客户','联系'];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const pos = window.scrollY + window.innerHeight/3;
+      const ids = ['hero','about','experience','projects','portfolio','skills','clients','contact'];
+      for(let i=ids.length-1;i>=0;i--){
+        const el = document.getElementById('pro-'+ids[i]);
+        if(el && el.offsetTop <= pos){ setActive(i); break; }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById('pro-'+id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  };
+
+  const colorMap = { blue:'#00B4FF', green:'#00DC8C', orange:'#FFA032', purple:'#A855F7' };
+
+  return React.createElement('div', { className: 'min-h-screen pro-gradient-bg text-[#C0C8D8] relative overflow-hidden pro-scrollbar' },
+    React.createElement(CustomCursor, { proMode: true }),
+    React.createElement('div', { className: 'noise-overlay' }),
+    // Back button
+    React.createElement('button', { onClick:onBack, className:'fixed top-10 left-10 z-[100] px-7 py-4 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 text-gray-400 hover:text-white hover:border-pro-amber/25 flex items-center gap-4 text-sm uppercase font-semibold tracking-widest transition-all hover:scale-105 shadow-lg' }, '◂ BACK'),
+    // Sidebar
+    React.createElement('div', { className: 'pro-sidebar hidden lg:flex' },
+      ...sections.map((s,i) => React.createElement('div', { key:s, className:'relative' },
+        React.createElement('div', { className:`pro-sidebar-dot ${active===i?'active':''}`, onClick:()=>scrollTo(['hero','about','experience','projects','portfolio','skills','clients','contact'][i]) },
+          React.createElement('span', { className:'pro-sidebar-label' }, s)
+        )
+      ))
+    ),
+    // Content
+    React.createElement('div', { className: 'max-w-[1100px] mx-auto px-10 py-40 relative z-10' },
+
+      // ===== 01 HERO =====
+      React.createElement('header', { id:'pro-hero', className:'border-b border-white/5 pb-28 mb-28' },
+        React.createElement('div', { className: 'space-y-8 max-w-3xl pro-reveal' },
+          React.createElement('div', { className: 'inline-block px-5 py-2 bg-pro-amber/10 border border-pro-amber/30 rounded-full text-xs text-pro-amber tracking-widest font-semibold' }, 'PROFESSIONAL RESUME'),
+          React.createElement('h1', { className: 'text-[6rem] lg:text-[8rem] font-black tracking-tighter uppercase leading-[.85] text-white' }, DATA.name),
+          React.createElement('p', { className: 'text-2xl lg:text-3xl text-pro-amber font-bold tracking-wide' }, DATA.title),
+          React.createElement('div', { className: 'flex flex-wrap gap-8 pt-2' },
+            ...DATA.proInfo.map((info,i) => React.createElement('div', { key:i, className:'flex items-center gap-2 text-gray-400 font-medium text-sm' },
+              React.createElement('span', { className:'text-pro-amber/60' }, info.icon), info.value
+            ))
+          ),
+          // Hero stats
+          React.createElement('div', { className: 'grid grid-cols-3 gap-6 pt-8 max-w-lg' },
+            ...DATA.proStats.map((stat,i) => React.createElement('div', { key:i, className:'glass-card p-6 text-center pro-reveal' },
+              React.createElement('div', { className:'text-3xl font-bold mb-1', style:{color: colorMap[stat.color]} }, stat.value),
+              React.createElement('div', { className:'text-xs text-gray-500' }, stat.label)
+            ))
+          )
+        )
+      ),
+
+      // ===== 02 ABOUT =====
+      React.createElement('section', { id:'pro-about', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '👤'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '个人简介 / About')
+        ),
+        React.createElement('div', { className:'grid lg:grid-cols-[2fr_1fr] gap-8' },
+          // Left: career overview + advantages
+          React.createElement('div', { className:'space-y-6' },
+            React.createElement('div', { className:'glass-card p-8 pro-reveal' },
+              React.createElement('h3', { className:'text-lg font-bold text-pro-amber mb-4' }, '职业概述'),
+              React.createElement('p', { className:'text-gray-400 text-sm leading-relaxed' }, DATA.summary)
+            ),
+            React.createElement('div', { className:'glass-card p-8 pro-reveal' },
+              React.createElement('h3', { className:'text-lg font-bold text-pro-amber mb-5' }, '核心优势'),
+              React.createElement('div', { className:'grid grid-cols-2 gap-3' },
+                ...DATA.advantages.map((adv,i) => React.createElement('div', { key:i, className:'flex items-center gap-3 p-3 rounded-lg bg-white/[.02] hover:bg-pro-amber/[.05] transition-colors' },
+                  React.createElement('div', { className:'w-2 h-2 rounded-full', style:{background: ['#00B4FF','#00DC8C','#FFA032','#A855F7'][i]} }),
+                  React.createElement('span', { className:'text-gray-300 text-sm' }, adv)
+                ))
+              )
+            )
+          ),
+          // Right: info card
+          React.createElement('div', { className:'glass-card p-8 pro-reveal' },
+            ...[
+              { label:'邮箱', value: DATA.email, link:'mailto:'+DATA.email },
+              { label:'电话', value: DATA.phone, link:'tel:'+DATA.phone },
+              { label:'所在地', value: DATA.location },
+              { label:'作品平台', value:'新片场 / 站酷', link: null }
+            ].map((item,i) => React.createElement('div', { key:i, className:'py-4 border-b border-white/5 last:border-0' },
+              React.createElement('div', { className:'text-[11px] text-gray-500 mb-1' }, item.label),
+              item.link
+                ? React.createElement('a', { href:item.link, target:'_blank', className:'text-sm text-white font-medium hover:text-pro-amber transition-colors' }, item.value)
+                : React.createElement('p', { className:'text-sm text-white font-medium' }, item.value)
+            ))
+          )
+        )
+      ),
+
+      // ===== 03 EXPERIENCE =====
+      React.createElement('section', { id:'pro-experience', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '💼'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '工作经历 / Experience')
+        ),
+        React.createElement('div', { className:'relative pl-8 border-l-2 border-white/5 space-y-14' },
+          ...DATA.experience.map((exp,i) => React.createElement('div', { key:i, className:'relative glass-card p-8 pro-reveal' },
+            React.createElement('div', { className:'absolute top-9', style:{left:'-2.2rem',width:'14px',height:'14px',borderRadius:'50%',background:'#0A0C16',border:'3px solid '+colorMap[exp.color],boxShadow:'0 0 12px '+colorMap[exp.color]+'40'} }),
+            React.createElement('h3', { className:'text-xl font-bold text-white mb-2' }, exp.company),
+            React.createElement('div', { className:'flex items-center gap-3 mb-4' },
+              React.createElement('span', { className:'inline-block px-3 py-1 rounded-full text-xs font-semibold', style:{background: colorMap[exp.color]+'1A', color: colorMap[exp.color]} }, exp.role),
+              React.createElement('span', { className:'text-xs text-gray-500' }, exp.year)
+            ),
+            React.createElement('ul', { className:'space-y-2 mb-4' },
+              ...exp.highlights.map((h,j) => React.createElement('li', { key:j, className:'text-gray-400 text-sm flex items-start gap-2' },
+                React.createElement('span', { style:{color: colorMap[exp.color], flexShrink:0} }, '•'), h
+              ))
+            ),
+            React.createElement('div', { className:'flex flex-wrap gap-2' },
+              ...exp.tags.map((t,k) => React.createElement('span', { key:k, className:'px-3 py-1 text-[10px] font-mono rounded-full tracking-wider border', style:{background: colorMap[exp.color]+'1A', borderColor: colorMap[exp.color]+'4D', color: colorMap[exp.color]} }, t))
+            )
+          ))
+        )
+      ),
+
+      // ===== 04 PROJECTS =====
+      React.createElement('section', { id:'pro-projects', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '📂'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '核心项目 / Projects')
+        ),
+        React.createElement('div', { className:'grid md:grid-cols-3 gap-6' },
+          ...DATA.projects.map((p,i) => React.createElement('div', { key:i, className:'glass-card overflow-hidden pro-reveal' },
+            React.createElement('div', { className:'h-1', style:{background: colorMap[p.color]} }),
+            React.createElement('div', { className:'p-6' },
+              React.createElement('p', { className:'text-[10px] font-semibold tracking-wider mb-2', style:{color: colorMap[p.color]} }, p.type),
+              React.createElement('h3', { className:'text-xl font-bold text-white mb-2' }, p.title),
+              React.createElement('p', { className:'text-gray-500 text-xs mb-4' }, p.subtitle),
+              React.createElement('p', { className:'text-gray-400 text-sm leading-relaxed mb-5' }, p.desc),
+              React.createElement('div', { className:'flex flex-wrap gap-2' },
+                ...p.tech.map((t,k) => React.createElement('span', { key:k, className:'px-3 py-1 text-[10px] font-mono rounded-full tracking-wider border', style:{background: colorMap[p.color]+'1A', borderColor: colorMap[p.color]+'4D', color: colorMap[p.color]} }, t))
+              )
+            )
+          ))
+        )
+      ),
+
+      // ===== 05 PORTFOLIO =====
+      React.createElement('section', { id:'pro-portfolio', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '🎬'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '作品展示 / Portfolio')
+        ),
+        // Tab buttons
+        React.createElement('div', { className:'flex flex-wrap gap-3 mb-8' },
+          ...DATA.portfolioTabs.map((tab,i) => React.createElement('button', {
+            key: tab.id,
+            onClick: () => setActiveTab(tab.id),
+            className: 'px-5 py-2.5 rounded-full text-sm font-medium border transition-all cursor-pointer',
+            style: activeTab === tab.id
+              ? { background: colorMap[tab.color], borderColor: colorMap[tab.color], color: '#fff' }
+              : { background: 'transparent', borderColor: 'rgba(35,43,65,.5)', color: '#969BAF' }
+          }, tab.label))
+        ),
+        // Tab content
+        React.createElement('div', { className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' },
+          ...(DATA.portfolioContent[activeTab] || []).map((item,i) => React.createElement('div', { key:i, className:'glass-card overflow-hidden pro-reveal' },
+            React.createElement('div', { className:'relative', style:{aspectRatio: item.video ? '16/9' : '1/1', background:'#0A0C16'} },
+              React.createElement('div', { className:'absolute inset-0 flex items-center justify-center' },
+                item.video
+                  ? React.createElement('div', { className:'w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110', style:{background: colorMap[DATA.portfolioTabs.find(t=>t.id===activeTab)?.color || 'blue']+'E6'} },
+                      React.createElement('span', { className:'text-white text-lg ml-1' }, '▶')
+                    )
+                  : React.createElement('div', { className:'text-4xl opacity-30' }, '🖼')
+              ),
+              React.createElement('div', { className:'absolute bottom-0 inset-x-0 h-1/2', style:{background:'linear-gradient(transparent, rgba(0,0,0,.6))'} })
+            ),
+            React.createElement('div', { className:'p-4' },
+              React.createElement('h4', { className:'font-semibold text-sm text-white flex items-center gap-2' },
+                item.video && React.createElement('span', { style:{color: colorMap[DATA.portfolioTabs.find(t=>t.id===activeTab)?.color || 'blue']} }, '▶'),
+                item.title
+              ),
+              React.createElement('p', { className:'text-gray-500 text-xs mt-1' }, item.meta)
+            )
+          ))
+        ),
+        // Platform links for certain tabs
+        activeTab === 'xinpianchang' && React.createElement('div', { className:'mt-8 text-center' },
+          React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'inline-flex items-center gap-2 px-6 py-3 glass-card hover:border-pro-amber/30 hover:-translate-y-1 transition-all text-sm text-white' },
+            React.createElement('span', null, '▶'), ' 前往新片场查看全部13个作品'
+          )
+        ),
+        activeTab === 'zcool' && React.createElement('div', { className:'mt-8 text-center' },
+          React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'inline-flex items-center gap-2 px-6 py-3 glass-card hover:border-pro-amber/30 hover:-translate-y-1 transition-all text-sm text-white' },
+            React.createElement('span', null, '▶'), ' 前往站酷查看全部作品'
+          )
+        )
+      ),
+
+      // ===== 06 SKILLS =====
+      React.createElement('section', { id:'pro-skills', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '⚙️'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '技术能力 / Skills')
+        ),
+        React.createElement('div', { className:'grid md:grid-cols-3 gap-6' },
+          ...DATA.proSkills.map((skill,i) => React.createElement('div', { key:i, className:'glass-card p-8 pro-reveal' },
+            React.createElement('div', { className:'w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5', style:{background: colorMap[skill.color]+'1A', color: colorMap[skill.color]} }, skill.icon),
+            React.createElement('h3', { className:'text-lg font-bold text-white mb-4' }, skill.title),
+            React.createElement('ul', { className:'space-y-2 mb-5' },
+              ...skill.items.map((item,j) => React.createElement('li', { key:j, className:'text-gray-400 text-sm flex items-center gap-2 pl-4 relative' },
+                React.createElement('div', { className:'absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full', style:{background: colorMap[skill.color]} }),
+                item
+              ))
+            ),
+            React.createElement('div', { className:'flex flex-wrap gap-2' },
+              ...skill.tech.map((t,k) => React.createElement('span', { key:k, className:'px-3 py-1 text-[10px] font-mono rounded-full tracking-wider border', style:{background: colorMap[skill.color]+'1A', borderColor: colorMap[skill.color]+'4D', color: colorMap[skill.color]} }, t))
+            )
+          ))
+        )
+      ),
+
+      // ===== 07 CLIENTS =====
+      React.createElement('section', { id:'pro-clients', className:'mb-28' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '🤝'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '服务客户 / Clients')
+        ),
+        React.createElement('div', { className:'grid md:grid-cols-3 gap-5' },
+          ...DATA.proClients.map((client,i) => React.createElement('div', { key:i, className:'glass-card p-8 text-center pro-reveal' },
+            React.createElement('h3', { className:'text-2xl font-bold mb-2', style:{color: colorMap[client.color]} }, client.name),
+            React.createElement('p', { className:'text-gray-500 text-sm' }, client.type)
+          ))
+        )
+      ),
+
+      // ===== 08 CONTACT =====
+      React.createElement('section', { id:'pro-contact', className:'pb-24' },
+        React.createElement('div', { className:'flex items-center gap-5 mb-14' },
+          React.createElement('div', { className:'w-10 h-10 rounded-xl bg-pro-amber/10 flex items-center justify-center', style:{fontSize:18} }, '✉️'),
+          React.createElement('h2', { className:'text-xl font-bold uppercase tracking-[.25em] text-white/80' }, '联系方式 / Contact')
+        ),
+        React.createElement('div', { className:'grid md:grid-cols-3 gap-6' },
+          ...[
+            { icon:'📧', label:'邮箱', value: DATA.email, link:'mailto:'+DATA.email, color:'blue' },
+            { icon:'📱', label:'电话', value: DATA.phone, link:'tel:'+DATA.phone, color:'green' },
+            { icon:'📍', label:'所在地', value: DATA.location, link:null, color:'orange' }
+          ].map((c,i) => React.createElement(c.link ? 'a' : 'div', { key:i, ...(c.link ? {href:c.link, target:'_blank'} : {}), className:'glass-card p-8 text-center pro-reveal hover:-translate-y-1 transition-transform', style:{textDecoration:'none',color:'inherit'} },
+            React.createElement('div', { className:'w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl', style:{background: colorMap[c.color]+'1A', color: colorMap[c.color]} }, c.icon),
+            React.createElement('p', { className:'text-[11px] text-gray-500 mb-1' }, c.label),
+            React.createElement('p', { className:'text-white font-semibold' }, c.value)
+          ))
+        ),
+        // Platform links
+        React.createElement('div', { className:'flex justify-center gap-6 mt-10 pt-10 border-t border-white/5' },
+          ...DATA.proPlatforms.map((p,i) => React.createElement('a', { key:i, href:p.url, target:'_blank', className:'flex items-center gap-3 px-6 py-4 glass-card hover:border-pro-amber/30 hover:-translate-y-1 transition-all text-sm text-white no-underline' },
+            React.createElement('span', null, p.icon), ' ', p.name, ' · ', p.desc
+          ))
+        )
+      ),
+
+      // FOOTER
+      React.createElement('footer', { className:'border-t border-white/5 pt-8 flex justify-between items-center' },
+        React.createElement('div', { className:'text-[10px] font-mono text-gray-600 uppercase tracking-widest' }, 'PRO_Resume // '+DATA.name),
+        React.createElement('div', { className:'flex gap-2' },
+          React.createElement('div', { className:'w-7 h-7 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-500 text-[9px] font-bold' }, 'CH'),
+          React.createElement('div', { className:'w-7 h-7 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-500 text-[9px] font-bold' }, 'EN')
+        )
+      )
+    )
+  );
+}
+
+// ===== APP =====
+function App() {
+  const [mode, setMode] = useState('landing');
+
+  if(mode === 'big') return React.createElement('div', null,
+    React.createElement(BigResume, {onBack:()=>setMode('landing')}),
+    React.createElement(ChatBot)
+  );
+  if(mode === 'pro') return React.createElement(ProResume, {onBack:()=>setMode('landing')});
+  return React.createElement(LandingPage, {onSelect:setMode});
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+</script>
+</body>
+</html>

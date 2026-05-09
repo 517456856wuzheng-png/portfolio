@@ -652,67 +652,63 @@ function BigResume({onBack}) {
           )
         )
       );
-      case 3: return React.createElement('div', { className: 'max-w-6xl w-full grid lg:grid-cols-2 gap-20 items-center' },
-        React.createElement('div', { className: 'space-y-8' },
-          React.createElement('div', { className: 'space-y-3' },
-            React.createElement('div', { className: 'flex items-center gap-3' },
-              React.createElement('span', { className: 'text-5xl font-black italic stroke-green opacity-30 font-cyber' }, '04'),
+      case 3: return React.createElement('div', { className: 'max-w-5xl w-full grid lg:grid-cols-5 gap-8 items-center' },
+        React.createElement('div', { className: 'lg:col-span-2 space-y-4' },
+          React.createElement('div', { className: 'space-y-2' },
+            React.createElement('div', { className: 'flex items-center gap-2' },
+              React.createElement('span', { className: 'text-3xl font-black italic stroke-green opacity-30 font-cyber' }, '04'),
               React.createElement('div', { className: 'h-px flex-1 bg-white/10' })
             ),
-            React.createElement('h2', { className: 'text-5xl font-black italic uppercase leading-none font-cyber' }, '视觉孤岛'),
-            React.createElement('div', { className: 'font-mono text-[10px] tracking-[.4em] text-gray-500 uppercase' }, 'High_Entropy_Assets')
+            React.createElement('h2', { className: 'text-3xl font-black italic uppercase leading-none font-cyber' }, '\u89C6\u89C9\u5B64\u5C9B'),
+            React.createElement('div', { className: 'font-mono text-[9px] tracking-[.4em] text-gray-500 uppercase' }, 'High_Entropy_Assets')
           ),
-          React.createElement('p', { className: 'text-lg text-gray-500 font-bold italic leading-relaxed' }, '"每一帧都是独立的宇宙。点击卡片以探索不同的视觉逻辑。"'),
-          // Category cards with descriptions
-          React.createElement('div', { className: 'space-y-3' },
-            ...DATA.galleryCategories.map((c,i) => React.createElement('div', { key:c.id, className: 'p-4 border rounded-xl cursor-pointer rgb-shift transition-all hover:bg-white/5', style:{borderColor:nc[i%4]+'20'} },
-              React.createElement('div', { className: 'flex items-center justify-between' },
-                React.createElement('span', { className: 'text-xs font-black tracking-widest font-cyber', style:{color:nc[i%4]} }, c.id),
-                React.createElement('span', { className: 'text-[9px] font-mono text-gray-600' }, c.items+' items')
-              ),
-              React.createElement('p', { className: 'text-[10px] text-gray-500 font-medium mt-1.5 leading-relaxed' }, c.desc)
+          React.createElement('p', { className: 'text-sm text-gray-500 font-bold italic leading-relaxed' }, '"\u6BCF\u4E00\u5E27\u90FD\u662F\u72EC\u7ACB\u7684\u5B87\u5B99\u3002\u70B9\u51FB\u5361\u7247\u4EE5\u63A2\u7D22\u4E0D\u540C\u7684\u89C6\u89C9\u903B\u8F91\u3002"'),
+          // Category tags (compact inline)
+          React.createElement('div', { className: 'flex flex-wrap gap-2' },
+            ...DATA.galleryCategories.map((c,i) => React.createElement('span', { key:c.id, className: 'px-3 py-1.5 border rounded-lg cursor-pointer rgb-shift transition-all hover:bg-white/5 text-[10px] font-black tracking-wider font-cyber', style:{borderColor:nc[i%4]+'30',color:nc[i%4]} },
+              c.id + ' \u00B7 ' + c.items
             ))
           ),
-          React.createElement('div', { className: 'flex gap-3 items-center neon-text-cycle font-black italic font-cyber text-sm' },
-            React.createElement('span', { className: 'text-lg' }, '👆'),
-            React.createElement('span', null, 'CLICK CARD TO ROTATE DECK')
+          React.createElement('div', { className: 'flex gap-2 items-center neon-text-cycle font-black italic font-cyber text-xs' },
+            React.createElement('span', null, '\uD83D\uDC46'),
+            React.createElement('span', null, 'CLICK CARD TO ROTATE')
           ),
-          // Portfolio platform links
-          React.createElement('div', { className: 'space-y-3 pt-4' },
-            React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'flex items-center gap-3 p-3 border border-white/10 rounded-xl hover:border-neon-green/30 hover:bg-white/[.02] transition-all no-underline' },
-              React.createElement('span', { className:'text-lg' }, '▶'),
+          // Portfolio platform links (compact)
+          React.createElement('div', { className: 'flex gap-2' },
+            React.createElement('a', { href:'https://xinpianchang.com/u10053048', target:'_blank', className:'flex-1 flex items-center gap-2 p-2.5 border border-white/10 rounded-lg hover:border-neon-green/30 hover:bg-white/[.02] transition-all no-underline' },
+              React.createElement('span', { className:'text-sm' }, '\u25B6'),
               React.createElement('div', null,
-                React.createElement('span', { className:'text-xs font-bold text-white' }, '新片场'),
-                React.createElement('span', { className:'text-[9px] font-mono text-gray-500 ml-2' }, '13 videos · 企业形象/TVC/剧情')
+                React.createElement('span', { className:'text-[10px] font-bold text-white' }, '\u65B0\u7247\u573A'),
+                React.createElement('span', { className:'text-[8px] font-mono text-gray-500 ml-1' }, '13 videos')
               )
             ),
-            React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'flex items-center gap-3 p-3 border border-white/10 rounded-xl hover:border-electric-cyan/30 hover:bg-white/[.02] transition-all no-underline' },
-              React.createElement('span', { className:'text-lg' }, '◆'),
+            React.createElement('a', { href:'https://www.zcool.com.cn/u/19060388', target:'_blank', className:'flex-1 flex items-center gap-2 p-2.5 border border-white/10 rounded-lg hover:border-electric-cyan/30 hover:bg-white/[.02] transition-all no-underline' },
+              React.createElement('span', { className:'text-sm' }, '\u25C6'),
               React.createElement('div', null,
-                React.createElement('span', { className:'text-xs font-bold text-white' }, '站酷'),
-                React.createElement('span', { className:'text-[9px] font-mono text-gray-500 ml-2' }, '6 groups · IP设计/平面/产品设计')
+                React.createElement('span', { className:'text-[10px] font-bold text-white' }, '\u7AD9\u9177'),
+                React.createElement('span', { className:'text-[8px] font-mono text-gray-500 ml-1' }, '6 groups')
               )
             )
           )
         ),
-        React.createElement('div', { className: 'relative h-[550px] flex items-center justify-center' },
+        React.createElement('div', { className: 'lg:col-span-3 relative h-[420px] flex items-center justify-center' },
           ...galleryItems.map((asset,i) => {
             const offset = ((i - stack + galleryItems.length) % galleryItems.length);
             return React.createElement('div', {
               key:i,
               onClick:()=>setStack(prev=>(prev+1)%galleryItems.length),
               onDoubleClick:(e)=>{ e.stopPropagation(); setBigLightbox({src:asset.url, title:asset.title, type:asset.type}); },
-              className:'absolute w-[380px] aspect-[3/4] bg-white rounded-[2rem] border-[10px] border-black shadow-2xl cursor-pointer active:scale-95 overflow-hidden',
-              style:{zIndex:galleryItems.length-offset,transform:`rotate(${offset*8}deg) translateX(${offset*25}px) translateY(${offset*8}px) scale(${1-offset*.05})`,opacity:1-offset*.2,pointerEvents:offset===0?'auto':'none',borderColor:offset===0?nc[i%4]:'#000',boxShadow:offset===0?`0 0 25px ${nc[i%4]}40`:'none',transition:'all .5s cubic-bezier(.34,1.56,.64,1)'}
+              className:'absolute w-[280px] aspect-[3/4] bg-white rounded-[1.5rem] border-[8px] border-black shadow-2xl cursor-pointer active:scale-95 overflow-hidden',
+              style:{zIndex:galleryItems.length-offset,transform:`rotate(${offset*6}deg) translateX(${offset*18}px) translateY(${offset*6}px) scale(${1-offset*.05})`,opacity:1-offset*.2,pointerEvents:offset===0?'auto':'none',borderColor:offset===0?nc[i%4]:'#000',boxShadow:offset===0?`0 0 20px ${nc[i%4]}40`:'none',transition:'all .5s cubic-bezier(.34,1.56,.64,1)'}
             },
               // Media
               asset.type==='video' ?
                 React.createElement('video', { src:asset.url, autoPlay:true, muted:true, loop:true, className:'w-full h-full object-cover rounded-[1rem]' })
                 : React.createElement('img', { src:asset.url, className:'w-full h-full object-cover rounded-[1rem]', alt:asset.title }),
               // Bottom info bar
-              React.createElement('div', { className: 'absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black via-black/80 to-transparent' },
-                React.createElement('h4', { className: 'text-xl font-black italic uppercase leading-none font-cyber text-white' }, asset.title),
-                React.createElement('p', { className: 'text-[10px] text-gray-400 font-medium mt-1.5 leading-relaxed' }, asset.desc)
+              React.createElement('div', { className: 'absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent' },
+                React.createElement('h4', { className: 'text-sm font-black italic uppercase leading-none font-cyber text-white' }, asset.title),
+                React.createElement('p', { className: 'text-[9px] text-gray-400 font-medium mt-1 leading-relaxed line-clamp-2' }, asset.desc)
               )
             );
           })

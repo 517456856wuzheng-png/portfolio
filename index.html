@@ -270,10 +270,10 @@ const DATA = {
   ],
   // Page 2: TIMELINE - Assets with detailed descriptions
   timelineAssets: [
-    { title: "Remotion 视频引擎", type: "image", url: "https://images.unsplash.com/photo-1551288049-bbbda546697a?q=80&w=800", desc: "React 驱动的视频自动化管线", detail: "用代码替代传统剪辑软件，将 React 组件映射为视频帧。支持参数化调整动画、批量渲染数千条视频变体。", impact: "制作效率提升 10x" },
-    { title: "JOLINK AI 终端", type: "image", url: "https://images.unsplash.com/photo-1518364538800-6da391fead8a?q=80&w=800", desc: "跨平台 AI 集成工作台", detail: "基于 Electron + React 构建的桌面应用，集成 ComfyUI 节点流编辑器、Prompt 管理器、模型切换面板。", impact: "AI 工具链统一入口" },
-    { title: "MICA 数字领航员", type: "video", url: "https://cdn.pixabay.com/vimeo/849424754/ai-generated-849424754.mp4?width=800", desc: "Live2D 实时语音桌宠", detail: "实时面部追踪 + 多模态语音同步的数字人。支持语音对话、屏幕感知、主动提醒。", impact: "情感化 AI 交互" },
-    { title: "风格迁移实验", type: "video", url: "https://cdn.pixabay.com/vimeo/852654921/scifi-852654921.mp4?width=800", desc: "Wan Fusion 场景重塑", detail: "利用 Wan Fusion 进行大规模场景风格迁移，将写实素材转为赛博朋克/水墨/油画风格。", impact: "一鱼多吃的素材复用" }
+    { title: "Remotion 视频引擎", type: "image", url: "assets/images/界面截图1.png", desc: "React 驱动的视频自动化管线", detail: "用代码替代传统剪辑软件，将 React 组件映射为视频帧。支持参数化调整动画、批量渲染数千条视频变体。", impact: "制作效率提升 10x" },
+    { title: "JOLINK AI 终端", type: "image", url: "assets/images/界面截图2.png", desc: "跨平台 AI 集成工作台", detail: "基于 Electron + React 构建的桌面应用，集成 ComfyUI 节点流编辑器、Prompt 管理器、模型切换面板。", impact: "AI 工具链统一入口" },
+    { title: "MICA 数字领航员", type: "video", url: "assets/videos/克隆人1.0.mp4", desc: "Live2D 实时语音桌宠", detail: "实时面部追踪 + 多模态语音同步的数字人。支持语音对话、屏幕感知、主动提醒。", impact: "情感化 AI 交互" },
+    { title: "风格迁移实验", type: "video", url: "assets/videos/jimeng-2026-02-05-5881.mp4", desc: "Wan Fusion 场景重塑", detail: "利用 Wan Fusion 进行大规模场景风格迁移，将写实素材转为赛博朋克/水墨/油画风格。", impact: "一鱼多吃的素材复用" }
   ],
   // Page 3: GALLERY
   galleryCategories: [
@@ -282,10 +282,10 @@ const DATA = {
     { id: "MINI_APP", color: "#FF0040", desc: "小程序/工具 — 遗憾清单、AI 助手等 Side Project", items: 6 }
   ],
   galleryItems: [
-    { title: 'JOLINK 终端界面', url: 'https://images.unsplash.com/photo-1551288049-bbbda546697a?q=80&w=1000', type:'image', desc:'Electron + React 构建的跨平台 AI 工作台，集成 ComfyUI 节点流编辑器与 Prompt 管理器' },
-    { title: 'MICA 交互协议', url: 'https://images.unsplash.com/photo-1518364538800-6da391fead8a?q=80&w=1000', type:'image', desc:'MCP 智能体交互协议架构图，展示本地工具调用与向量记忆持久化流程' },
-    { title: '数字人渲染管线', url: 'https://cdn.pixabay.com/vimeo/849424754/ai-generated-849424754.mp4?width=640', type:'video', desc:'实时面部追踪驱动的 Live2D 数字领航员，多模态语音与视觉毫秒级同步' },
-    { title: '场景风格迁移', url: 'https://cdn.pixabay.com/vimeo/852654921/scifi-852654921.mp4?width=640', type:'video', desc:'Wan Fusion 大规模场景风格重塑实验 — 赛博朋克/水墨/油画风格一键切换' }
+    { title: 'JOLINK 终端界面', url: 'assets/images/界面截图1.png', type:'image', desc:'Electron + React 构建的跨平台 AI 工作台，集成 ComfyUI 节点流编辑器与 Prompt 管理器' },
+    { title: 'MICA 交互协议', url: 'assets/images/界面截图2.png', type:'image', desc:'MCP 智能体交互协议架构图，展示本地工具调用与向量记忆持久化流程' },
+    { title: '数字人渲染管线', url: 'assets/videos/克隆人1.0合成.mp4', type:'video', desc:'实时面部追踪驱动的 Live2D 数字领航员，多模态语音与视觉毫秒级同步' },
+    { title: '场景风格迁移', url: 'assets/videos/jimeng-2026-02-09-4160.mp4', type:'video', desc:'Wan Fusion 大规模场景风格重塑实验 — 赛博朋克/水墨/油画风格一键切换' }
   ],
   // Page 4: TERMINAL
   terminalMessage: "所有像素皆可编程。我们不是在「做视频」，我们是在为视觉世界编写物理引擎。",
@@ -443,6 +443,7 @@ function BigResume({onBack}) {
   const [stack, setStack] = useState(0);
   const [activeTag, setActiveTag] = useState(null);
   const [tooltip, setTooltip] = useState(null);
+  const [bigLightbox, setBigLightbox] = useState(null); // { src, title, type }
   const tagRefs = useRef({});
   const pages = ['LAUNCH', 'IDENTITY', 'TIMELINE', 'GALLERY', 'TERMINAL'];
   const nc = DATA.neonColors;
@@ -624,7 +625,7 @@ function BigResume({onBack}) {
           ...DATA.timelineAssets.map((item,i) =>
             React.createElement('div', { key:i, className: 'min-w-[380px] bg-black rounded-[2rem] border-4 overflow-hidden relative shrink-0 transition-all shadow-2xl rgb-shift flex flex-col', style:{borderColor:nc[i%4]+'30'} },
               // Media
-              React.createElement('div', { className: 'aspect-video relative overflow-hidden' },
+              React.createElement('div', { className: 'aspect-video relative overflow-hidden cursor-zoom-in', onClick:()=>setBigLightbox({src:item.url, title:item.title, type:item.type}) },
                 item.type==='video' ?
                   React.createElement('video', { src:item.url, autoPlay:true, muted:true, loop:true, className:'w-full h-full object-cover' })
                   : React.createElement('img', { src:item.url, className:'w-full h-full object-cover', alt:item.title }),
@@ -698,7 +699,9 @@ function BigResume({onBack}) {
           ...galleryItems.map((asset,i) => {
             const offset = ((i - stack + galleryItems.length) % galleryItems.length);
             return React.createElement('div', {
-              key:i, onClick:()=>setStack(prev=>(prev+1)%galleryItems.length),
+              key:i,
+              onClick:()=>setStack(prev=>(prev+1)%galleryItems.length),
+              onDoubleClick:(e)=>{ e.stopPropagation(); setBigLightbox({src:asset.url, title:asset.title, type:asset.type}); },
               className:'absolute w-[380px] aspect-[3/4] bg-white rounded-[2rem] border-[10px] border-black shadow-2xl cursor-pointer active:scale-95 overflow-hidden',
               style:{zIndex:galleryItems.length-offset,transform:`rotate(${offset*8}deg) translateX(${offset*25}px) translateY(${offset*8}px) scale(${1-offset*.05})`,opacity:1-offset*.2,pointerEvents:offset===0?'auto':'none',borderColor:offset===0?nc[i%4]:'#000',boxShadow:offset===0?`0 0 25px ${nc[i%4]}40`:'none',transition:'all .5s cubic-bezier(.34,1.56,.64,1)'}
             },
@@ -812,6 +815,24 @@ function BigResume({onBack}) {
         React.createElement('div', { className: 'w-10 h-10 bg-white/5 border border-neon-green/20 rounded-full flex items-center justify-center text-neon-green font-black italic text-[10px] font-cyber' }, 'CH'),
         React.createElement('div', { className: 'w-10 h-10 bg-white/5 border border-electric-cyan/20 rounded-full flex items-center justify-center text-electric-cyan font-black italic text-[10px] font-cyber' }, 'EN')
       )
+    ),
+    // BIG LIGHTBOX OVERLAY
+    bigLightbox && React.createElement('div', {
+      onClick: () => setBigLightbox(null),
+      className: 'fixed inset-0 z-[9999] flex items-center justify-center',
+      style: { background: 'rgba(0,0,0,.95)', backdropFilter: 'blur(20px)', cursor: 'zoom-out' }
+    },
+      React.createElement('div', { className: 'relative max-w-[90vw] max-h-[90vh]', onClick: e => e.stopPropagation(), style: { cursor: 'default' } },
+        React.createElement('button', {
+          onClick: () => setBigLightbox(null),
+          className: 'absolute -top-12 right-0 text-white/60 hover:text-neon-green text-2xl font-bold z-10 transition-colors',
+          style: { cursor: 'pointer' }
+        }, '\u2715'),
+        React.createElement('div', { className: 'text-white/80 text-sm mb-3 font-cyber uppercase tracking-widest' }, bigLightbox.title),
+        bigLightbox.type === 'video'
+          ? React.createElement('video', { src: bigLightbox.src, controls: true, autoPlay: true, className: 'max-w-[85vw] max-h-[80vh] rounded-2xl shadow-2xl', style: { outline: 'none', boxShadow: '0 0 60px rgba(57,255,20,.15)' } })
+          : React.createElement('img', { src: bigLightbox.src, alt: bigLightbox.title, className: 'max-w-[85vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain', style: { boxShadow: '0 0 60px rgba(57,255,20,.15)' } })
+      )
     )
   );
 }
@@ -846,6 +867,7 @@ function ChatBot() {
 function ProResume({onBack}) {
   const [active, setActive] = useState(0);
   const [activeTab, setActiveTab] = useState('xinpianchang');
+  const [lightbox, setLightbox] = useState(null); // { src, title, type }
   const sections = ['概览','简介','经历','项目','作品','能力','客户','联系'];
 
   useEffect(() => {
@@ -1013,17 +1035,31 @@ function ProResume({onBack}) {
         // Tab content
         React.createElement('div', { className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' },
           ...(DATA.portfolioContent[activeTab] || []).map((item,i) => React.createElement('div', { key:i, className:'glass-card overflow-hidden pro-reveal' },
-            React.createElement('div', { className:'relative', style:{aspectRatio: (item.video && typeof item.video === 'string') ? '16/9' : '1/1', background:'#0A0C16'} },
+            React.createElement('div', {
+              className:'relative cursor-zoom-in group/thumb',
+              style:{aspectRatio: (item.video && typeof item.video === 'string') ? '16/9' : '1/1', background:'#0A0C16'},
+              onClick: () => {
+                if (item.img && typeof item.img === 'string') setLightbox({ src: item.img, title: item.title, type: 'image' });
+                else if (item.video && typeof item.video === 'string') setLightbox({ src: item.video, title: item.title, type: 'video' });
+              }
+            },
               item.img && typeof item.img === 'string'
-                ? React.createElement('img', { src: item.img, alt: item.title, className:'w-full h-full object-cover', loading:'lazy' })
+                ? React.createElement('img', { src: item.img, alt: item.title, className:'w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-105', loading:'lazy' })
                 : item.video && typeof item.video === 'string'
-                  ? React.createElement('video', { src: item.video, className:'w-full h-full object-cover', controls: true, preload:'metadata', poster:'' })
+                  ? React.createElement('div', { className:'w-full h-full relative' },
+                      React.createElement('video', { src: item.video, className:'w-full h-full object-cover', preload:'metadata', poster:'', muted: true }),
+                      React.createElement('div', { className:'absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity group-hover/thumb:bg-black/40' },
+                        React.createElement('div', { className:'w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center' },
+                          React.createElement('span', { className:'text-white text-lg ml-0.5' }, '\u25B6')
+                        )
+                      )
+                    )
                   : React.createElement('div', { className:'absolute inset-0 flex items-center justify-center' },
                       item.video
                         ? React.createElement('div', { className:'w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110', style:{background: colorMap[DATA.portfolioTabs.find(t=>t.id===activeTab)?.color || 'blue']+'E6'} },
-                            React.createElement('span', { className:'text-white text-lg ml-1' }, '▶')
+                            React.createElement('span', { className:'text-white text-lg ml-1' }, '\u25B6')
                           )
-                        : React.createElement('div', { className:'text-4xl opacity-30' }, '\u{1F5BC}')
+                        : React.createElement('div', { className:'text-4xl opacity-30' }, '\uD83D\uDDBC\uFE0F')
                     ),
               React.createElement('div', { className:'absolute bottom-0 inset-x-0 h-1/3', style:{background:'linear-gradient(transparent, rgba(0,0,0,.5))'} })
             ),
@@ -1118,6 +1154,27 @@ function ProResume({onBack}) {
           React.createElement('div', { className:'w-7 h-7 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-500 text-[9px] font-bold' }, 'CH'),
           React.createElement('div', { className:'w-7 h-7 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-500 text-[9px] font-bold' }, 'EN')
         )
+      )
+    ),
+    // LIGHTBOX OVERLAY
+    lightbox && React.createElement('div', {
+      onClick: () => setLightbox(null),
+      className: 'fixed inset-0 z-[9999] flex items-center justify-center',
+      style: { background: 'rgba(0,0,0,.92)', backdropFilter: 'blur(20px)', cursor: 'zoom-out' }
+    },
+      React.createElement('div', { className: 'relative max-w-[90vw] max-h-[90vh]', onClick: e => e.stopPropagation(), style: { cursor: 'default' } },
+        // Close button
+        React.createElement('button', {
+          onClick: () => setLightbox(null),
+          className: 'absolute -top-12 right-0 text-white/60 hover:text-white text-2xl font-bold z-10 transition-colors',
+          style: { cursor: 'pointer' }
+        }, '\u2715'),
+        // Title
+        React.createElement('div', { className: 'text-white/80 text-sm mb-3 font-medium' }, lightbox.title),
+        // Media
+        lightbox.type === 'video'
+          ? React.createElement('video', { src: lightbox.src, controls: true, autoPlay: true, className: 'max-w-[85vw] max-h-[80vh] rounded-xl shadow-2xl', style: { outline: 'none' } })
+          : React.createElement('img', { src: lightbox.src, alt: lightbox.title, className: 'max-w-[85vw] max-h-[80vh] rounded-xl shadow-2xl object-contain' })
       )
     )
   );
